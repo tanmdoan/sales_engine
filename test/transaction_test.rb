@@ -1,5 +1,4 @@
 require './test/test_helper'
-require './lib/transaction'
 
 class TransactionTest<Minitest::Test
 

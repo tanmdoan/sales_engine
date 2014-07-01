@@ -1,5 +1,4 @@
 require './test/test_helper'
-require './lib/customer_repository'
 
 class CustomerRepositoryTest < Minitest::Test
   attr_reader :customer_repository

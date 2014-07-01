@@ -1,5 +1,4 @@
-require 'csv'
-require './lib/customer'
+require './test/test_helper'
 
 class CustomerRepository
   attr_reader :customers
@@ -8,7 +7,7 @@ class CustomerRepository
     @customers = customers
   end
 
-  def self.load(file= './data/customers.csv')
+  def self.load(file='./data/customers.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
       Customer.new(row)

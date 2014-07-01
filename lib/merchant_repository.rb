@@ -1,4 +1,4 @@
-require './lib/test_helper'
+require './test/test_helper'
 
 
 class MerchantRepository
@@ -8,7 +8,7 @@ class MerchantRepository
     @merchants = merchants
   end
 
-  def self.load(file= './data/merchants.csv')
+  def self.load(file='./data/merchants.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
       Merchant.new(row)

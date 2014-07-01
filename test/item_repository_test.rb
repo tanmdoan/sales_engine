@@ -1,5 +1,4 @@
 require './test/test_helper'
-require './lib/item_repository'
 
 class ItemRepositoryTest < Minitest::Test
   attr_reader :item_repository
