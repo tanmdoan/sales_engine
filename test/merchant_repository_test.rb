@@ -16,14 +16,26 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_merchant_id
-    #expected vs actual
-    #expecting an merchant object with id = 3
-    #actual is taking the id of object and getting 3
     results = merchant_repository.find_by_id(3)
     assert_equal 1, results.count
-
     results.each do |merchant|
       assert_equal "3", merchant.id
+    end
+  end
+
+  def test_it_can_find_by_merchant_name
+    results = merchant_repository.find_by_name("Williamson Group")
+    assert_equal 1, results.count
+    results.each do |merchant|
+      assert_equal "Williamson Group", merchant.name
+    end
+  end
+
+  def test_it_can_find_all_merchants_by_name
+    results = merchant_repository.find_all_by_name("Williamson Group")
+    assert_equal 2, results.count
+    results.each do |merchant|
+      assert_equal "Williamson Group", merchant.name
     end
   end
 

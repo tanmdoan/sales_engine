@@ -1,5 +1,5 @@
 require './test/test_helper'
-
+require 'pry'
 
 class MerchantRepository
   attr_reader :merchants
@@ -23,5 +23,20 @@ class MerchantRepository
     end
   end
 
+  def find_by_name(name)
+    name = name.to_s
+    selected = []
+    merchants.detect do |merchant|
+      selected << merchant if merchant.name == name
+    end
+    selected
+  end
+
+  def find_all_by_name(name)
+    name = name.to_s
+    merchants.select do |merchant|
+      merchant.name == name
+    end
+  end
 
 end
