@@ -15,4 +15,13 @@ class MerchantRepository
     end
     new(rows)
   end
+
+  def find_by_id(id)
+    id = id.to_s
+    merchants.select do |merchant|
+      merchant.id == id
+    end
+  end
+
+
 end

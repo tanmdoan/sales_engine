@@ -15,4 +15,16 @@ class MerchantRepositoryTest < Minitest::Test
     refute merchant_repository.merchants.empty?
   end
 
+  def test_it_can_find_by_merchant_id
+    #expected vs actual
+    #expecting an merchant object with id = 3
+    #actual is taking the id of object and getting 3
+    results = merchant_repository.find_by_id(3)
+    assert_equal 1, results.count
+
+    results.each do |merchant|
+      assert_equal "3", merchant.id
+    end
+  end
+
 end
