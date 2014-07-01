@@ -1,5 +1,4 @@
-require 'csv'
-require './lib/invoice'
+require './lib/test_helper'
 
 class InvoiceRepository
   attr_reader :invoices
@@ -8,7 +7,7 @@ class InvoiceRepository
     @invoices = invoices
   end
 
-  def self.load(file)
+  def self.load(file = './data/invoices.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
       Invoice.new(row)
