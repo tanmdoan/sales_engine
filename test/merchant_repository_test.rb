@@ -4,7 +4,8 @@ class MerchantRepositoryTest < Minitest::Test
   attr_reader :merchant_repository
 
   def setup
-    @merchant_repository = MerchantRepository.load('./data/fixtures/merchants_sample.csv')
+    merchants = MerchantRepositoryParser.load('./data/fixtures/merchants_sample.csv').parse
+    @merchant_repository = MerchantRepository.new(merchants)
   end
 
   def test_that_merchant_repository_contains_merchant_data
@@ -40,9 +41,9 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_instances_of_merchant
-    merchant_repo = MerchantRepository.load
-    assert 100 <= merchant_repo.merchants.count
-  end  
+    merchant_repo = MerchantRepositoryParser.load('./data/merchants.csv').parse
+    assert 100 <= merchant_repo.count
+  end
 
   def test_it_can_pull_a_random_merchant_instance
     results = merchant_repository.random
