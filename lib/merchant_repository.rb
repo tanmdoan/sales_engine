@@ -44,5 +44,4 @@ class MerchantRepository
      selected << merchants.sample
      selected
    end
-
 end
