@@ -1,5 +1,5 @@
 require './test/test_helper'
-
+require 'pry'
 
 class MerchantRepository
   attr_reader :merchants
@@ -14,5 +14,13 @@ class MerchantRepository
       Merchant.new(row)
     end
     new(rows)
+  end
+
+  def find_by_id(id)
+    id = id.to_s
+    results = merchants.select do |merchant|
+      merchant.id == id
+    end
+    binding.pry
   end
 end
