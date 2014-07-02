@@ -1,12 +1,15 @@
 require './test/test_helper'
 require 'pry'
 
-class MerchantRepository
+module BaseRepo
   attr_reader :merchants
-
   def initialize(merchants)
     @merchants = merchants
   end
+end
+
+class MerchantRepository
+  include BaseRepo
 
   def self.load(file='./data/merchants.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
@@ -15,6 +18,7 @@ class MerchantRepository
     end
     new(rows)
   end
+
 
   def find_by_id(id)
     id = id.to_s
@@ -37,6 +41,12 @@ class MerchantRepository
     merchants.select do |merchant|
       merchant.name == name
     end
+  end
+
+  def random
+    selected = []
+    selected << merchants.sample
+    selected
   end
 
 end

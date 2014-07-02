@@ -8,7 +8,7 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_that_merchant_repository_contains_merchant_data
-    assert_equal 10, merchant_repository.merchants.count
+    assert 10 <= merchant_repository.merchants.count
   end
 
   def test_to_verify_that_merchant_repository_is_not_empty
@@ -37,6 +37,16 @@ class MerchantRepositoryTest < Minitest::Test
     results.each do |merchant|
       assert_equal "Williamson Group", merchant.name
     end
+  end
+
+  def test_it_can_find_all_instances_of_merchant
+    merchant_repo = MerchantRepository.load
+    assert 100 <= merchant_repo.merchants.count
+  end
+
+  def test_it_can_pull_a_random_merchant_instance
+    results = merchant_repository.random
+    assert_equal 1, results.count
   end
 
 end
