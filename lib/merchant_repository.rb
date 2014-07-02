@@ -23,7 +23,6 @@ class MerchantRepository
     end
     binding.pry
   end
-=======
 
   def find_by_id(id)
     id = id.to_s
@@ -54,5 +53,4 @@ class MerchantRepository
     selected
   end
 
->>>>>>> b57569cb1e29497a3f0a7a131ae35982f34ddeaf
 end
