@@ -2,8 +2,8 @@ require './test/test_helper'
 require 'pry'
 
 class MerchantRepository
-  attr_reader :merchants
 
+  attr_reader :merchants
   def initialize(merchants)
     @merchants = merchants
   end
@@ -23,4 +23,36 @@ class MerchantRepository
     end
     binding.pry
   end
+=======
+
+  def find_by_id(id)
+    id = id.to_s
+    merchants.select do |merchant|
+      merchant.id == id
+    end
+  end
+
+  def find_by_name(name)
+    name = name.to_s
+    selected = []
+    merchants.detect do |merchant|
+      selected << merchant if merchant.name == name
+    end
+    selected
+  end
+
+  def find_all_by_name(name)
+    name = name.to_s
+    merchants.select do |merchant|
+      merchant.name == name
+    end
+  end
+
+  def random
+    selected = []
+    selected << merchants.sample
+    selected
+  end
+
+>>>>>>> b57569cb1e29497a3f0a7a131ae35982f34ddeaf
 end
