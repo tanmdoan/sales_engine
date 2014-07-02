@@ -1,12 +1,15 @@
 require './test/test_helper'
-
+# require 'pry'
 class CustomerRepository
  attr_reader :customers
 
  def initialize(customers)
-   @customers = customers
+  @customers = customers
  end
- #
+  #  def initialize
+  #    @customers = CustomerParser.load.parse
+  #  end
+
  # def self.load(file='./data/customers.csv')
  #   data = CSV.open(file, headers: true, header_converters: :symbol)
  #   rows = data.map do |row|
@@ -20,7 +23,6 @@ class CustomerRepository
    results = customers.select do |customer|
      customer.id == id
    end
-   binding.pry
  end
 
  def find_by_id(id)
