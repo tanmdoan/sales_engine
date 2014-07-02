@@ -18,14 +18,6 @@ class MerchantRepository
 
    def find_by_id(id)
      id = id.to_s
-     results = merchants.select do |merchant|
-       merchant.id == id
-     end
-     binding.pry
-   end
-
-   def find_by_id(id)
-     id = id.to_s
      merchants.select do |merchant|
        merchant.id == id
      end

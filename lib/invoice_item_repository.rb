@@ -46,13 +46,36 @@ class InvoiceItemRepository
     end
   end
 
-  def find_by_invoice_id(quantity)
+  def find_by_quantity(quantity)
     quantity = quantity.to_s
     selected = []
     invoice_items.detect do |invoice_item|
       selected << invoice_item if invoice_item.quantity == quantity
     end
     selected
+  end
+
+  def find_all_by_quantity(quantity)
+    quantity = quantity.to_s
+    invoice_items.select do |invoice_item|
+      invoice_item.quantity == quantity
+    end
+  end
+
+  def find_by_unit_price(unit_price)
+    unit_price = unit_price.to_s
+    selected = []
+    invoice_items.detect do |invoice_item|
+      selected << invoice_item if invoice_item.unit_price == unit_price
+    end
+    selected
+  end
+
+  def find_all_by_unit_price(unit_price)
+    unit_price = unit_price.to_s
+    invoice_items.select do |invoice_item|
+      invoice_item.unit_price == unit_price
+    end
   end
 
   def random

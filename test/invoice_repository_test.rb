@@ -7,11 +7,61 @@ class InvoiceRepositoryTest < Minitest::Test
     @invoice_repository = InvoiceRepository.load('./data/fixtures/invoices_sample.csv')
   end
 
-  def test_that_customer_repository_contains_merchant_data
-    assert_equal 10, invoice_repository.invoices.count
+  def test_that_invoice_repository_contains_invoice_data
+    assert 10 <= invoice_repository.invoices.count
   end
 
-  def test_to_verify_that_customer_repository_is_not_empty
+  def test_to_verify_that_invoice_repository_is_not_empty
     refute invoice_repository.invoices.empty?
+  end
+
+  def test_it_can_find_by_invoice_id
+    results = invoice_repository.find_by_id(3)
+    assert_equal 1, results.count
+    results.each do |invoice|
+      assert_equal "3", invoice.id
+    end
+  end
+
+  def test_it_can_find_by_customer_id
+    results = invoice_repository.find_by_customer_id(2)
+    assert_equal 1, results.count
+    results.each do |invoice|
+      assert_equal "2", invoice.customer_id
+    end
+  end
+
+  def test_it_can_find_by_all_customer_id
+    results = invoice_repository.find_by_all_customer_id(1)
+    assert_equal 8, results.count
+    results.each do |invoice|
+      assert_equal "1", invoice.customer_id
+    end
+  end
+
+  def test_it_can_find_by_merchant_id
+    results = invoice_repository.find_by_merchant_id("26")
+    assert_equal 1, results.count
+    results.each do |invoice|
+      assert_equal "26", invoice.merchant_id
+    end
+  end
+
+  def test_it_can_find_invoice_by_status
+    results = invoice_repository.find_by_status("shipped")
+    assert_equal 10, results.count
+    results.each do |invoice|
+      assert_equal "shipped", invoice.status
+    end
+  end
+
+  def test_it_can_find_all_instances_of_invoice
+    invoice_repo = InvoiceRepository.load
+    assert 100 <= invoice_repo.invoices.count
+  end
+
+  def test_it_can_pull_a_random_merchant_instance
+    results = invoice_repository.random
+    assert_equal 1, results.count
   end
 end

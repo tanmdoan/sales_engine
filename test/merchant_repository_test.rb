@@ -42,7 +42,7 @@ class MerchantRepositoryTest < Minitest::Test
   def test_it_can_find_all_instances_of_merchant
     merchant_repo = MerchantRepository.load
     assert 100 <= merchant_repo.merchants.count
-  end
+  end  
 
   def test_it_can_pull_a_random_merchant_instance
     results = merchant_repository.random

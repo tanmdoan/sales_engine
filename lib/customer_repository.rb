@@ -30,28 +30,28 @@ class CustomerRepository
    end
  end
 
- def find_by_first_name(firstname)
-   name = name.to_s
+ def find_by_first_name(first_name)
+   first_name = first_name.to_s
    selected = []
    customers.detect do |customer|
-     selected << customer if customer.first_name == firstname
+     selected << customer if customer.first_name == first_name
    end
    selected
  end
 
- def find_by_last_name(lastname)
-   name = name.to_s
+ def find_by_last_name(last_name)
+   last_name = last_name.to_s
    selected = []
    customers.detect do |customer|
-     selected << customer if customer.last_name == lastname
+     selected << customer if customer.last_name == last_name
    end
    selected
  end
 
- def find_all_by_first_name(firstname)
-   name = name.to_s
+ def find_all_by_first_name(first_name)
+   first_name = first_name.to_s
    customers.select do |customer|
-     customer.first_name == firstname
+     customer.first_name == first_name
    end
  end
 
