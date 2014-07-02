@@ -4,7 +4,7 @@ class MerchantRepositoryTest < Minitest::Test
   attr_reader :merchant_repository
 
   def setup
-    merchants = MerchantRepositoryParser.load('./data/fixtures/merchants_sample.csv').parse
+    merchants = MerchantParser.load('./data/fixtures/merchants_sample.csv').parse
     @merchant_repository = MerchantRepository.new(merchants)
   end
 
@@ -41,7 +41,7 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_instances_of_merchant
-    merchant_repo = MerchantRepositoryParser.load('./data/merchants.csv').parse
+    merchant_repo = MerchantParser.load('./data/merchants.csv').parse
     assert 100 <= merchant_repo.count
   end
 
