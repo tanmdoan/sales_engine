@@ -10,7 +10,7 @@ class CustomerParser
   def self.load(file='./data/customers.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
-      Merchant.new(row)
+      Customer.new(row)
     end
     new(rows)
   end
