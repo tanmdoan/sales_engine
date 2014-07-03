@@ -26,10 +26,8 @@ class MerchantRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_merchant_name
     results = merchant_repository.find_by_name("Williamson Group")
-    assert_equal 1, results.count
-    results.each do |merchant|
-      assert_equal "Williamson Group", merchant.name
-    end
+    assert_equal 1, results
+    assert_equal "Williamson Group", merchant.name
   end
 
   def test_it_can_find_all_merchants_by_name
