@@ -8,7 +8,7 @@ class TransactionRepository
     @transactions = transactions
   end
 
-  def self.load(sales_engine, file='./data/transactions.csv')
+  def self.load(sales_engine, file='./data/fixtures/transactions_sample.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
       Transaction.new(row, sales_engine)
