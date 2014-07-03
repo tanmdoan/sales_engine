@@ -9,7 +9,7 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_customer_repository_exist_on_engine_start_up
-    skip
+
     # engine = SalesEngine.new
     # engine.startup
     assert_equal 1000, engine.customer_repository.customers.count
