@@ -8,13 +8,13 @@ class TransactionRepository
     @transactions = transactions
   end
 
-  def self.load(file='./data/transactions.csv')
-    data = CSV.open(file, headers: true, header_converters: :symbol)
-    rows = data.map do |row|
-      Transaction.new(row)
-    end
-    new(rows)
-  end
+  # def self.load(file='./data/transactions.csv')
+  #   data = CSV.open(file, headers: true, header_converters: :symbol)
+  #   rows = data.map do |row|
+  #     Transaction.new(row)
+  #   end
+  #   new(rows)
+  # end
 
   def find_by_id(id)
     id = id.to_s
