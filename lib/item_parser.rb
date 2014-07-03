@@ -11,8 +11,8 @@ class ItemParser
   def self.load(file='./data/items.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
-      Item.new(row)
+      Item.new(row, self)
     end
-    new(rows)
+    new(rows, engine)
   end
 end

@@ -15,6 +15,7 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_sales_engine_can_find_all_items_sold_by_a_merchant
+    skip
     merchant    = engine.merchant_repository.find_by_name("Schroeder-Jerde")
     merchant_id = merchant.id
     items       = item_repository.find_by_merchant_id(merchant_id)

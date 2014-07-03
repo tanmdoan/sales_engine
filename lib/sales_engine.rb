@@ -12,12 +12,12 @@ class SalesEngine
 
 
   def startup
-    items = ItemParser.load.parse
-    transactions = TransactionParser.load.parse
-    invoices = InvoiceParser.load.parse
-    # invoice_items = InvoiceItemParser.load.parse
-    merchants = MerchantParser.load.parse
-    customers = CustomerParser.load.parse
+    items = ItemParser.load.parse(self)
+    transactions = TransactionParser.load.parse(self)
+    invoices = InvoiceParser.load.parse(self)
+    # invoice_items = InvoiceItemParser.load.parse(self)
+    merchants = MerchantParser.load.parse(self)
+    customers = CustomerParser.load.parse(self)
 
 
     @item_repository ||= ItemRepository.new(items)
