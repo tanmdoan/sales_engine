@@ -8,13 +8,13 @@ class ItemRepository
     @items = items
   end
 
-  def self.load(file ='./data/items.csv')
-    data = CSV.open(file, headers: true, header_converters: :symbol)
-    rows = data.map do |row|
-      Item.new(row)
-    end
-    new(rows)
-  end
+  # def self.load(file ='./data/items.csv')
+  #   data = CSV.open(file, headers: true, header_converters: :symbol)
+  #   rows = data.map do |row|
+  #     Item.new(row)
+  #   end
+  #   new(rows)
+  # end
 
 def find_by_id(id)
     id = id.to_s

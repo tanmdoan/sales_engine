@@ -4,7 +4,8 @@ class ItemRepositoryTest < Minitest::Test
   attr_reader :item_repository
 
   def setup
-    @item_repository = ItemRepository.load('./data/fixtures/items_sample.csv')
+    items = ItemParser.load('./data/fixtures/items_sample.csv').parse
+    @item_repository = ItemRepository.new(items)
   end
 
   def test_that_item_repository_contains_transaction_data
@@ -63,14 +64,15 @@ class ItemRepositoryTest < Minitest::Test
     end
   end
 
-  def test_it_can_find_all_instances_of_merchant
-    item_repo = ItemRepository.load
-    assert 100 <= item_repo.items.count
-  end
-
   def test_it_can_pull_a_random_merchant_instance
     results = item_repository.random
     assert_equal 1, results.count
+  end
+
+  def test_it_can_find_all_instances_of_merchant
+    items = ItemParser.load.parse
+    item_repository = ItemRepository.new(items)
+    assert 100 <= item_repository.items.count
   end
 
 end
