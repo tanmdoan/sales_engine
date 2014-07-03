@@ -4,7 +4,8 @@ class CustomerRepositoryTest < Minitest::Test
  attr_reader :customer_repository
 
  def setup
-   @customer_repository = CustomerRepository.load('./data/fixtures/customers_sample.csv')
+   customers = CustomerParser.load('./data/fixtures/customers_sample.csv').parse
+   @customer_repository = CustomerRepository.new(customers)
  end
 
  def test_that_customer_repository_contains_customer_data
@@ -56,8 +57,8 @@ class CustomerRepositoryTest < Minitest::Test
  end
 
  def test_it_can_find_all_instances_of_merchant
-   customer_repo = CustomerRepository.load
-   assert 100 <= customer_repo.customers.count
+   customer_repo = CustomerParser.load('./data/customers.csv').parse
+   assert 100 <= customer_repo.count
  end
 
  def test_it_can_pull_a_random_customers_instance
