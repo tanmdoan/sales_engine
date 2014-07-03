@@ -1,5 +1,5 @@
 require './test/test_helper'
-require 'pry'
+
 class Invoice
   attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at, :repository
 
@@ -18,7 +18,6 @@ class Invoice
     selected = []
     repository.detect do |invoice|
       selected << invoice if invoice.merchant_id == merchant_id
-      binding.pry
     end
   end
 

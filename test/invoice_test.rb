@@ -1,5 +1,5 @@
 require './test/test_helper'
-require 'pry'
+
 
 class InvoiceTest<Minitest::Test
     attr_reader :invoice
