@@ -6,17 +6,14 @@ class CustomerRepository
  def initialize(customers)
   @customers = customers
  end
-  #  def initialize
-  #    @customers = CustomerParser.load.parse
-  #  end
-
- # def self.load(file='./data/customers.csv')
- #   data = CSV.open(file, headers: true, header_converters: :symbol)
- #   rows = data.map do |row|
- #     Customer.new(row)
- #   end
- #   new(rows)
- # end
+ 
+ def self.load(file='./data/customers.csv')
+   data = CSV.open(file, headers: true, header_converters: :symbol)
+   rows = data.map do |row|
+     Customer.new(row)
+   end
+   new(rows)
+ end
 
  def find_by_id(id)
    id = id.to_s

@@ -28,7 +28,7 @@ class MerchantRepository
      selected = merchants.detect do |merchant|
        merchant.name == name
      end
-     selected
+     selected[0].name
    end
 
    def find_all_by_name(name)
