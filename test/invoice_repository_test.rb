@@ -4,7 +4,8 @@ class InvoiceRepositoryTest < Minitest::Test
   attr_reader :invoice_repository
 
   def setup
-    @invoice_repository = InvoiceRepository.load('./data/fixtures/invoices_sample.csv')
+    invoices = InvoiceParser.load('./data/fixtures/invoices_sample.csv').parse
+    @invoice_repository = InvoiceRepository.new(invoices)
   end
 
   def test_that_invoice_repository_contains_invoice_data
@@ -56,8 +57,8 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_instances_of_invoice
-    invoice_repo = InvoiceRepository.load
-    assert 100 <= invoice_repo.invoices.count
+    invoice_repo = InvoiceParser.load('./data/invoices.csv').parse
+    assert 100 <= invoice_repo.count
   end
 
   def test_it_can_pull_a_random_merchant_instance

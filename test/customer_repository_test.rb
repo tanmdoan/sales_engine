@@ -45,8 +45,7 @@ class CustomerRepositoryTest < Minitest::Test
    assert_equal 2, results.count
    results.each do |customer|
      assert_equal "Joey", customer.first_name
-   end
- end
+   end+
 
  def test_it_can_find_all_customers_by_last_name
    results = customer_repository.find_all_by_last_name("Ondricka")

@@ -7,13 +7,13 @@ class InvoiceRepository
     @invoices = invoices
   end
 
-  def self.load(file ='./data/invoices.csv')
-    data = CSV.open(file, headers: true, header_converters: :symbol)
-    rows = data.map do |row|
-      Invoice.new(row)
-    end
-    new(rows)
-  end
+  # def self.load(file ='./data/invoices.csv')
+  #   data = CSV.open(file, headers: true, header_converters: :symbol)
+  #   rows = data.map do |row|
+  #     Invoice.new(row, self)
+  #   end
+  #   new(rows)
+  # end
 
   def find_by_id(id)
     id = id.to_s
@@ -59,4 +59,5 @@ class InvoiceRepository
     selected << invoices.sample
     selected
   end
+
 end
