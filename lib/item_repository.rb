@@ -34,7 +34,7 @@ def find_by_id(id)
   def find_by_name(name)
     name = name.to_s
     selected = []
-    selected = items.detect do |item|
+    items.detect do |item|
       selected << item if item.name == name
     end
     selected

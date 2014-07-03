@@ -18,17 +18,18 @@ class MerchantRepository
 
    def find_by_id(id)
      id = id.to_s
-     merchants.select do |merchant|
+     merchants.detect do |merchant|
        merchant.id == id
      end
    end
 
    def find_by_name(name)
      name = name.to_s
-     selected = merchants.detect do |merchant|
-       merchant.name == name
+    #  selected = []
+     merchants.detect do |merchant|
+       merchant.name == name # selected << merchant if 
      end
-     selected[0].name
+    #  selected
    end
 
    def find_all_by_name(name)
