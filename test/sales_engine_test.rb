@@ -24,5 +24,9 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_sales_engine_can_find_all_invoices_associated_with_a_merchant
+    merchant    = engine.merchant_repository.find_by_name("Kirlin, Jakubowski and Smitham")
+    merchant_id = merchant.id
+    invoices    = engine.invoice_repository.find_by_merhcant_id(merchant_id)
+    assert_equal 43, merchant.invoices.count
   end
 end
