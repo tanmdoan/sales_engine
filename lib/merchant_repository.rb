@@ -8,7 +8,7 @@ class MerchantRepository
      @merchants = merchants
    end
 
-   def self.load(sales_engine, file='./data/fixtures/merchants_sample.csv')
+   def self.load(sales_engine, file='./data/merchants.csv')
      data = CSV.open(file, headers: true, header_converters: :symbol)
      rows = data.map do |row|
        Merchant.new(row, sales_engine)
@@ -27,7 +27,7 @@ class MerchantRepository
      name = name.to_s
     #  selected = []
      merchants.detect do |merchant|
-       merchant.name == name # selected << merchant if 
+       merchant.name == name # selected << merchant if
      end
     #  selected
    end

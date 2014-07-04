@@ -40,11 +40,16 @@ class InvoiceRepository
 
   def find_by_merchant_id(merchant_id)
     merchant_id = merchant_id.to_s
-    selected = []
     invoices.detect do |invoice|
-      selected << invoice if invoice.merchant_id == merchant_id
+      invoice.merchant_id == merchant_id
     end
-    selected
+  end
+
+  def find_all_by_merchant_id(merchant_id)
+    merchant_id = merchant_id.to_s
+    invoices.select do |invoice|
+      invoice.merchant_id == merchant_id
+    end
   end
 
   def find_by_status(status)

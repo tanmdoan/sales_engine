@@ -41,10 +41,7 @@ class InvoiceRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_merchant_id
     results = invoice_repository.find_by_merchant_id("26")
-    assert_equal 1, results.count
-    results.each do |invoice|
-      assert_equal "26", invoice.merchant_id
-    end
+    assert_equal "26", results.merchant_id
   end
 
   def test_it_can_find_invoice_by_status
