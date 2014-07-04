@@ -23,11 +23,12 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_sales_engine_can_find_by_all_items_sold_by_a_merchant
-    merchant   = engine.merchant_repository.find_by_name("Schroeder-Jerde")
+    merchant   = engine.merchant_repository.find_by_name("Kirlin, Jakubowski and Smitham")
     merchant_id = merchant.id
     items       = engine.item_repository.find_by_merchant_id(merchant_id)
-    assert_equal 15, merchant.items.count
-    # binding.pry
+    assert_equal 33, merchant.items.count
+    item = merchant.items.find {|i| i.name == 'Item Consequatur Odit' }
+    assert_equal 'Item Consequatur Odit', item.name
   end
 
   def test_sales_engine_can_find_all_invoices_associated_with_a_merchant
