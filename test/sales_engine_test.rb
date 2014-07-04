@@ -26,7 +26,7 @@ class SalesEngineTest < Minitest::Test
     merchant    = engine.merchant_repository.find_by_name("Schroeder-Jerde")
     merchant_id = merchant.id
     items       = engine.item_repository.find_by_merchant_id(merchant_id)
-    assert_equal 15, merchant.items.count
+    assert_equal 10, merchant.items.count
     # skip
   end
 
