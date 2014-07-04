@@ -4,7 +4,7 @@ class CustomerRepositoryTest < Minitest::Test
  attr_reader :customer_repository
 
  def setup
-   @customer_repository = CustomerRepository.load("./data/fixtures/customers_sample.csv")
+   @customer_repository = CustomerRepository.load(self, "./data/fixtures/customers_sample.csv")
  end
 
  def test_that_customer_repository_contains_customer_data
@@ -56,7 +56,7 @@ class CustomerRepositoryTest < Minitest::Test
  end
 
  def test_it_can_find_all_instances_of_customer
-   customer_repo = CustomerRepository.load
+   customer_repo = CustomerRepository.load(self, './data/customers.csv')
    assert 100 <= customer_repo.customers.count
  end
 

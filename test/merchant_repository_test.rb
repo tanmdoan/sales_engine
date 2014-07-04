@@ -16,18 +16,15 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_merchant_id
+    # skip
     results = merchant_repository.find_by_id(3)
-    assert_equal 1, results.count
-    results.each do |merchant|
-      assert_equal "3", merchant.id
-    end
+    assert_equal "3", results.id
   end
 
   def test_it_can_find_by_merchant_name
-    skip
+
     results = merchant_repository.find_by_name("Williamson Group")
-    assert_equal 1, results
-    assert_equal "Williamson Group", merchant.name
+    assert_equal "Williamson Group", results.name
   end
 
   def test_it_can_find_all_merchants_by_name
