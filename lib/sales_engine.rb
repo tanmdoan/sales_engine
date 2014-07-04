@@ -22,7 +22,7 @@ class SalesEngine
 
     @item_repository ||= ItemRepository.load(self)
     @merchant_repository ||= MerchantRepository.load(self)
-    #@transaction_repository ||= TransactionRepository.new(transactions)
+    @transaction_repository ||= TransactionRepository.load(self)
     @invoice_repository ||= InvoiceRepository.load(self)
      #@invoice_item_repository ||= InvoiceItemRepository.new(invoice_items)
     @customer_repository ||= CustomerRepository.load(self)

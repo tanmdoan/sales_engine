@@ -38,5 +38,12 @@ class SalesEngineTest < Minitest::Test
     assert_equal 43, merchant.invoices.count
   end
 
+  def test_sales_engine_can_find_transactions_associated_with_an_invoice
+    invoice = engine.invoice_repository.find_by_id(1002)
+    invoice_id = invoice.id
+    transactions = engine.transaction_repository.find_by_invoice_id(invoice_id)
+    assert_equal 1, invoice.transactions.count
+  end
+
 
 end

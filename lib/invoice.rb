@@ -12,4 +12,9 @@ class Invoice
     @updated_at  = data[:updated_at]
     @sales_engine = sales_engine
   end
+
+
+  def transactions
+    sales_engine.transaction_repository.find_all_by_invoice_id(id)
+  end
 end

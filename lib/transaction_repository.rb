@@ -8,7 +8,7 @@ class TransactionRepository
     @transactions = transactions
   end
 
-  def self.load(sales_engine, file='./data/fixtures/transactions_sample.csv')
+  def self.load(sales_engine, file='./data/transactions.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
       Transaction.new(row, sales_engine)
@@ -18,18 +18,23 @@ class TransactionRepository
 
   def find_by_id(id)
     id = id.to_s
-    transactions.select do |transaction|
+    transactions.detect do |transaction|
       transaction.id == id
     end
   end
 
   def find_by_invoice_id(invoice_id)
     invoice_id = invoice_id.to_s
-    selected = []
     transactions.detect do |transaction|
-      selected << transaction if transaction.invoice_id == invoice_id
+      transaction.invoice_id == invoice_id
     end
-    selected
+  end
+
+  def find_all_by_invoice_id(invoice_id)
+    invoice_id = invoice_id.to_s
+    transactions.select do |transaction|
+      transaction.invoice_id == invoice_id
+    end
   end
 
   def find_by_credit_card_number(credit_card_number)
