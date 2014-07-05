@@ -12,4 +12,8 @@ class Item
     @updated_at  = data[:updated_at]
     @sales_engine = sales_engine
   end
+
+  def invoice_items
+    sales_engine.invoice_item_repository.find_all_by_item_id(id)
+  end
 end

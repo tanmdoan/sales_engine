@@ -26,11 +26,9 @@ def find_by_id(id)
 
   def find_by_name(name)
     name = name.to_s
-    selected = []
     items.detect do |item|
-      selected << item if item.name == name
+    item.name == name
     end
-    selected
   end
 
   def find_by_merchant_id(merchant_id)
