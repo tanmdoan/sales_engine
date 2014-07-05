@@ -1,4 +1,6 @@
 require './test/test_helper'
+require 'pry'
+
 class SalesEngineTest < Minitest::Test
   attr_reader :engine, :invoice_repository, :item_repository, :customer_repository, :merchant_repository
 
@@ -21,7 +23,11 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_sales_engine_can_find_by_all_items_sold_by_a_merchant
+<<<<<<< Updated upstream
     merchant   = engine.merchant_repository.find_by_name("Kirlin, Jakubowski and Smitham")
+=======
+    merchant    = engine.merchant_repository.find_by_name("Schroeder-Jerde")
+>>>>>>> Stashed changes
     merchant_id = merchant.id
     items       = engine.item_repository.find_by_merchant_id(merchant_id)
     assert_equal 33, merchant.items.count
@@ -30,33 +36,19 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_sales_engine_can_find_all_invoices_associated_with_a_merchant
+    
     merchant    = engine.merchant_repository.find_by_name("Kirlin, Jakubowski and Smitham")
     merchant_id = merchant.id
     invoices    = engine.invoice_repository.find_by_merchant_id(merchant_id)
     assert_equal 43, merchant.invoices.count
   end
 
-  def test_sales_engine_can_find_all_transactions_associated_with_an_invoice
+  def test_sales_engine_can_find_transactions_associated_with_an_invoice
     invoice = engine.invoice_repository.find_by_id(1002)
     invoice_id = invoice.id
     transactions = engine.transaction_repository.find_by_invoice_id(invoice_id)
     assert_equal 1, invoice.transactions.count
   end
 
-  def test_sales_engine_can_find_all_invoice_items_associated_with_an_invoice
-    invoice = engine.invoice_repository.find_by_id(1002)
-    invoice_id = invoice.id
-    invoice_items = engine.invoice_item_repository.find_by_invoice_id(invoice_id)
-    assert_equal 3, invoice.invoice_items.count
-  end
 
-  def test_sales_engine_can_find_all_items_associated_with_an_invoice
-    invoice = engine.invoice_repository.find_by_id(1002)
-    invoice_id = invoice.id
-    invoice_items = engine.invoice_item_repository.find_all_by_invoice_id(invoice_id)
-    assert_equal 3, invoice.items.count
-  #   item = invoice.items.find {|i| i.name == 'Item Accusamus Officia' }
-  #   assert_equal 'Item Accusamus Officia', item.name
-  # end
-  end
 end
