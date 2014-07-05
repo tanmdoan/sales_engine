@@ -54,7 +54,7 @@ class SalesEngineTest < Minitest::Test
   def test_sales_engine_can_find_all_items_associated_with_an_invoice
     invoice = engine.invoice_repository.find_by_id(1002)
     invoice_id = invoice.id
-    items = engine.invoice_item_repository.find_all_by_item_id(invoice_id)
+    invoice_items = engine.invoice_item_repository.find_by_invoice_id(invoice_id)
     assert_equal 3, invoice.items.count
     item = invoice.items.find {|i| i.name == 'Item Accusamus Officia' }
     assert_equal 'Item Accusamus Officia', item.name
