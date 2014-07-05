@@ -2,7 +2,7 @@ require './test/test_helper'
 
 
 class InvoiceItemRepository
-  attr_reader :invoice_items
+  attr_reader :invoice_items, :sales_engine
 
   def initialize(invoice_items)
     @invoice_items = invoice_items
@@ -23,9 +23,9 @@ class InvoiceItemRepository
     end
   end
 
-  def find_all_by_item_id(item_id)
+  def find_by_item_id(item_id)
     item_id = item_id.to_s
-    invoice_items.select do |invoice_item|
+    invoice_items.detect do |invoice_item|
       invoice_item.item_id == item_id
     end
   end

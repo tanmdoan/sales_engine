@@ -2,7 +2,7 @@ require './test/test_helper'
 
 
 class ItemRepository
-  attr_reader :items
+  attr_reader :items, :sales_engine
 
   def initialize(items)
     @items = items
@@ -11,25 +11,18 @@ class ItemRepository
   def self.load(sales_engine, file ='./data/items.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
-      Item.new(row)
+      Item.new(row, sales_engine)
     end
     new(rows)
   end
 
 def find_by_id(id)
     id = id.to_s
-    results = items.select do |item|
+    results = items.detect do |item|
       item.id == id
     end
-    binding.pry
   end
 
-  def find_by_id(id)
-    id = id.to_s
-    items.select do |item|
-      item.id == id
-    end
-  end
 
   def find_by_name(name)
     name = name.to_s

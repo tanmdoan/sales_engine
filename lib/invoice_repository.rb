@@ -24,11 +24,9 @@ class InvoiceRepository
 
   def find_by_customer_id(customer_id)
     customer_id = customer_id.to_s
-    selected = []
     invoices.detect do |invoice|
-      selected << invoice if invoice.customer_id == customer_id
+    invoice.customer_id == customer_id
     end
-    selected
   end
 
   def find_by_all_customer_id(customer_id)

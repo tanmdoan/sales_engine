@@ -1,5 +1,5 @@
 require './test/test_helper'
-require 'pry'
+
 class SalesEngineTest < Minitest::Test
   attr_reader :engine, :invoice_repository, :item_repository, :customer_repository, :merchant_repository
 
@@ -37,36 +37,12 @@ class SalesEngineTest < Minitest::Test
     assert_equal 43, merchant.invoices.count
   end
 
-  def test_sales_engine_can_find_all_transactions_associated_with_an_invoice
+  def test_sales_engine_can_find_transactions_associated_with_an_invoice
     invoice = engine.invoice_repository.find_by_id(1002)
     invoice_id = invoice.id
     transactions = engine.transaction_repository.find_by_invoice_id(invoice_id)
     assert_equal 1, invoice.transactions.count
   end
 
-  def test_sales_engine_can_find_all_invoice_items_associated_with_an_invoice
-    invoice = engine.invoice_repository.find_by_id(1002)
-    invoice_id = invoice.id
-    invoice_items = engine.invoice_item_repository.find_by_invoice_id(invoice_id)
-    assert_equal 3, invoice.invoice_items.count
-    item = invoice.invoice_items.find {|ii| ii.item.name == 'Item Accusamus Officia' }
-
-  end
-
-  def test_sales_engine_can_find_all_items_associated_with_an_invoice
-    invoice = engine.invoice_repository.find_by_id(1002)
-    invoice_id = invoice.id
-    invoice_items = engine.invoice_item_repository.find_by_invoice_id(invoice_id)
-    assert_equal 3, invoice.items.count
-    item = invoice.items.find {|i| i.name == 'Item Accusamus Officia' }
-    assert_equal 'Item Accusamus Officia', item.name
-  end
-
-  def test_sales_engine_can_find_customer_associated_with_an_invoice
-    invoice = engine.invoice_repository.find_by_id(1002)
-    customer_id = invoice.customer_id
-    customer = engine.customer_repository.find_by_id(customer_id)
-    assert_equal "Eric", customer.first_name
-  end
 
 end

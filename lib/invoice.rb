@@ -22,4 +22,15 @@ class Invoice
     sales_engine.invoice_item_repository.find_all_by_invoice_id(id)
   end
 
+  def items
+    # invoice_item = invoice_items.pop
+    # id = invoice_item.item_id
+    # sales_engine.item_repository.find_by_id(id)
+    item_ids = invoice_items.map(&:item_id)
+    item_ids.map {|item_id| sales_engine.item_repository.find_by_id(item_id)}
+  end
+
+  def customer
+    sales_engine.customer_repository.find_by_id(id)
+  end
 end
