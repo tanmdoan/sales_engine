@@ -24,7 +24,7 @@ class SalesEngine
     @merchant_repository ||= MerchantRepository.load(self)
     @transaction_repository ||= TransactionRepository.load(self)
     @invoice_repository ||= InvoiceRepository.load(self)
-     #@invoice_item_repository ||= InvoiceItemRepository.new(invoice_items)
+    @invoice_item_repository ||= InvoiceItemRepository.load(self)
     @customer_repository ||= CustomerRepository.load(self)
   end
 # binding.pry

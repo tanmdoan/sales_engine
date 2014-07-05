@@ -17,4 +17,12 @@ class Invoice
   def transactions
     sales_engine.transaction_repository.find_all_by_invoice_id(id)
   end
+
+  def invoice_items
+    sales_engine.invoice_item_repository.find_all_by_invoice_id(id)
+  end
+
+  def items
+    sales_engine.invoice_item_repository.find_all_by_item_id(id)
+  end
 end

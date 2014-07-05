@@ -8,10 +8,10 @@ class InvoiceItemRepository
     @invoice_items = invoice_items
   end
 
-  def self.load(file='./data/invoice_items.csv')
+  def self.load(sales_engine, file='./data/invoice_items.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
-      InvoiceItem.new(row)
+      InvoiceItem.new(row, sales_engine)
     end
     new(rows)
   end
@@ -23,7 +23,7 @@ class InvoiceItemRepository
     end
   end
 
-  def find_by_item_id(item_id)
+  def find_all_by_item_id(item_id)
     item_id = item_id.to_s
     invoice_items.select do |invoice_item|
       invoice_item.item_id == item_id
@@ -32,11 +32,9 @@ class InvoiceItemRepository
 
   def find_by_invoice_id(invoice_id)
     invoice_id = invoice_id.to_s
-    selected = []
     invoice_items.detect do |invoice_item|
-      selected << invoice_item if invoice_item.invoice_id == invoice_id
+      invoice_item.invoice_id == invoice_id
     end
-    selected
   end
 
   def find_all_by_invoice_id(invoice_id)
