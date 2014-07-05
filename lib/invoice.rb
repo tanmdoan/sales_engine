@@ -26,11 +26,16 @@ class Invoice
     # invoice_item = invoice_items.pop
     # id = invoice_item.item_id
     # sales_engine.item_repository.find_by_id(id)
-    item_ids = invoice_items.map(&:item_id)
-    item_ids.map {|item_id| sales_engine.item_repository.find_by_id(item_id)}
+    invoice_items.map(&:item)
+    # item_ids.map {|item_id| sales_engine.item_repository.find_by_id(item_id)}
   end
 
   def customer
     sales_engine.customer_repository.find_by_id(id)
   end
+
+  def merchant
+    sales_engine.merchant_repository.find_by_id(id)
+  end
+
 end

@@ -69,4 +69,12 @@ class SalesEngineTest < Minitest::Test
     assert_equal "Eric", customer.first_name
   end
 
+  def test_sales_engine_can_find_merchants_associated_with_an_invoice
+    invoice = engine.invoice_repository.find_by_id(1002)
+    merchant_id = invoice.merchant_id
+    merchant = engine.merchant_repository.find_by_id(merchant_id)
+    assert_equal "Rogahn LLC", merchant.name
+
+  end
+
 end
