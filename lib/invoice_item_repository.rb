@@ -18,7 +18,7 @@ class InvoiceItemRepository
 
   def find_by_id(id)
     id = id.to_s
-    invoice_items.select do |invoice_item|
+    invoice_items.detect do |invoice_item|
       invoice_item.id == id
     end
   end

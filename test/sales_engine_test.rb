@@ -74,7 +74,20 @@ class SalesEngineTest < Minitest::Test
     merchant_id = invoice.merchant_id
     merchant = engine.merchant_repository.find_by_id(merchant_id)
     assert_equal "Rogahn LLC", merchant.name
+  end
 
+  def test_sales_engine_can_find_invoices_associated_with_an_invoice_item
+    invoice_item = engine.invoice_item_repository.find_by_id(16934)
+    invoice_id = invoice_item.invoice_id
+    invoice = engine.invoice_repository.find_by_id(invoice_id)
+    assert_equal "shipped", invoice.status
+  end
+
+  def test_sales_engine_can_find_items_associated_with_an_invoice_item
+    invoice_item = engine.invoice_item_repository.find_by_id(16934)
+    item_id = invoice_item.item_id
+    item = engine.item_repository.find_by_id(item_id)
+    assert_equal "Item Cupiditate Magni", item.name
   end
 
 end

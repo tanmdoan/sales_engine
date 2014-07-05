@@ -15,4 +15,8 @@ class InvoiceItem
   def item
     sales_engine.item_repository.find_by_id(item_id)
   end
+
+  def invoice
+    sales_engine.invoice_item_repsitory.find_by_invoice_id(invoice_id)
+  end
 end
