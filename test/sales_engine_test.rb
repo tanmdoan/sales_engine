@@ -105,4 +105,10 @@ class SalesEngineTest < Minitest::Test
     assert_equal 7, customer.invoices.count
   end
 
+  def test_sales_engine_can_find_invoice_customer_associated_with_transactions
+    transactions_invoice_id = engine.transaction_repository.find_by_id(1138).invoice_id
+    invoice_customer_id     = engine.invoice_repository.find_by_id(transactions_invoice_id).customer_id
+    assert_equal "Chloe", transaction.invoice.customer.first_name
+  end
+
 end
