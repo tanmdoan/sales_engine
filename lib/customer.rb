@@ -9,4 +9,8 @@ class Customer
     @updated_at = data[:updated_at]
     @sales_engine = sales_engine
   end
+
+  def invoices
+    sales_engine.invoice_repository.find_all_by_customer_id(id)
+  end
 end

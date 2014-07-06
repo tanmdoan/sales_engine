@@ -100,4 +100,9 @@ class SalesEngineTest < Minitest::Test
     assert_equal "Kilback Inc", item.merchant.name
   end
 
+  def test_sales_engine_can_find_invoices_associated_with_customer
+    customer = engine.customer_repository.find_by_id(999)
+    assert_equal 7, customer.invoices.count
+  end
+
 end
