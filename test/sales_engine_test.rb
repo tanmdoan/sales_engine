@@ -93,7 +93,11 @@ class SalesEngineTest < Minitest::Test
   def test_sales_engine_can_find_invoice_items_associated_with_item
     item = engine.item_repository.find_by_name("Item Saepe Ipsum")
     assert_equal 8, item.invoice_items.count
+  end
 
+  def test_sales_engine_can_find_merchant_associated_with_item
+    item = engine.item_repository.find_by_name("Item Saepe Ipsum")
+    assert_equal "Kilback Inc", item.merchant.name
   end
 
 end
