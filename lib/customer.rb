@@ -13,4 +13,9 @@ class Customer
   def invoices
     sales_engine.invoice_repository.find_all_by_customer_id(id)
   end
+
+  def transactions
+    invoices.map {|invoice| invoice.transactions}.flatten
+  end
+
 end

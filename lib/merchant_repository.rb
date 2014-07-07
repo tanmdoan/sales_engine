@@ -61,7 +61,8 @@ class MerchantRepository
    end
 
    def all_invoices_by_date(date)
-     merchant.all_successful_invoices.select do |invoice|
+     return []
+     @merchants.all_successful_invoices.select do |invoice|
        Date.parse(invoice.created_at) == date
      end
    end

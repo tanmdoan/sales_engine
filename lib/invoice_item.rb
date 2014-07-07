@@ -17,6 +17,9 @@ class InvoiceItem
     @sales_engine = sales_engine
   end
 
+  def self.public_attributes
+    
+  end
   def item
     sales_engine.item_repository.find_by_id(item_id)
   end

@@ -140,17 +140,23 @@ class SalesEngineTest < Minitest::Test
   #   assert_equal BigDecimal.new("2549722.91"), revenue
   # end
 
-  def test_it_reports_all_revenue_for_a_merchant
-    merchant = engine.merchant_repository.find_by_name("Willms and Sons")
-    merchant_id = merchant.id
-    invoices = engine.invoice_repository.find_all_by_merchant_id(merchant_id)
-    invoice_ids = invoices.map do |invoice|
-      invoice.id
-    end
-    invoice_items = invoice_ids.map do |invoice_id|
-      engine.invoice_item_repository.find_by_invoice_id(invoice_id)
-    end
-    assert_equal BigDecimal.new("1148393.74"), merchant.revenue
-  end
+  # def test_it_reports_all_revenue_for_a_merchant
+  #   merchant = engine.merchant_repository.find_by_name("Willms and Sons")
+  #   merchant_id = merchant.id
+  #   invoices = engine.invoice_repository.find_all_by_merchant_id(merchant_id)
+  #   invoice_ids = invoices.map do |invoice|
+  #     invoice.id
+  #   end
+  #   invoice_items = invoice_ids.map do |invoice_id|
+  #     engine.invoice_item_repository.find_by_invoice_id(invoice_id)
+  #     binding.pry
+  #   end
+  #   assert_equal BigDecimal.new("1148393.74"), merchant.revenue
+  # end
 
+  def test_it_can_return_an_array_of_transaction_instances_associated_with_a_customer
+    customer = engine.customer_repository.find_by_id(2)
+    assert_equal 1, customer.transactions.count
+    binding.pry
+  end
 end
