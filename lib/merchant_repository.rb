@@ -60,7 +60,17 @@ class MerchantRepository
      selected
    end
 
-   def revenue(date)
+   def all_invoices_by_date(date)
+     merchant.all_successful_invoices.select do |invoice|
+       Date.parse(invoice.created_at) == date
+     end
+   end
+
+   
+
+
+   def revenue(date = nil)
+
 
    end
 end

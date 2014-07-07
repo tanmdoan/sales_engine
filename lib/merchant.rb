@@ -17,4 +17,12 @@ class Merchant
   def invoices
     sales_engine.invoice_repository.find_all_by_merchant_id(id)
   end
+
+  def all_successful_invoices
+    sales_engine.invoice_repository.find_all_by_status("shipped")
+  end
+
+
+
+
 end

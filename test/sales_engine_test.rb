@@ -128,7 +128,7 @@ class SalesEngineTest < Minitest::Test
     assert_equal "Daugherty Group", engine.merchant_repository.most_revenue.last.name
 
   def test_it_can_return_revenue_for_a_specific_date
-    date = Date.parse "Tue, 20 Mar 2012"
+    date = "Tue, 20 Mar 2012"
     revenue = engine.merchant_repository.revenue(date)
     assert_equal BigDecimal.new("2549722.91"), revenue
   end
