@@ -66,11 +66,11 @@ class MerchantRepository
      end
    end
 
-   
+
 
 
    def revenue(date = nil)
-
+     all_invoices_by_date(date)
 
    end
 end
