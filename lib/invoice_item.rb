@@ -1,10 +1,10 @@
-require 'unit_conversion'
+require 'bigdecimal'# require 'unit_conversion'
 
 class InvoiceItem
   attr_reader :id, :item_id, :invoice_id, :quantity,
               :unit_price, :created_at, :updated_at, :sales_engine
 
-  include UnitConversion
+  # include UnitConversion
 
   def initialize(data, sales_engine)
     @id         = data[:id]
@@ -25,8 +25,16 @@ class InvoiceItem
     sales_engine.invoice_item_repsitory.find_by_invoice_id(invoice_id)
   end
 
+  def convert_to_big_decimal(cents)
+    BigDecimal.new(convert_cents_to_dollars(cents).to_s)
+  end
+
+  def convert_cents_to_dollars(cents)
+    cents.to_i/100.00
+  end
+
   def charged
     quantity * unit_price
   end
-  
+
 end
