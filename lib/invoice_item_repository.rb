@@ -1,5 +1,5 @@
-require './test/test_helper'
-
+require 'csv'
+require_relative 'invoice_item'
 
 class InvoiceItemRepository
   attr_reader :invoice_items, :sales_engine

@@ -1,5 +1,6 @@
-require './test/test_helper'
-# require 'pry'
+require 'csv'
+require_relative 'customer'
+
 class CustomerRepository
  attr_reader :customers, :sales_engine
 

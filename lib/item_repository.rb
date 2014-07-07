@@ -1,4 +1,5 @@
-require './test/test_helper'
+require 'csv'
+require_relative 'item'
 
 
 class ItemRepository

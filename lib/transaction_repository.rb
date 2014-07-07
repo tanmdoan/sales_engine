@@ -1,5 +1,5 @@
-require './test/test_helper'
-
+require 'csv'
+require_relative 'transaction'
 
 class TransactionRepository
   attr_reader :transactions, :sales_engine

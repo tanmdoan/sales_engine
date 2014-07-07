@@ -1,4 +1,5 @@
-require './test/test_helper'
+require 'csv'
+require_relative 'merchant'
 
 class MerchantRepository
 
