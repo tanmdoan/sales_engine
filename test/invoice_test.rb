@@ -3,9 +3,9 @@ require './test/test_helper'
 
 class InvoiceTest<Minitest::Test
     attr_reader :invoice
+
   def setup
     @invoice = Invoice.new(data, self)
-
   end
 
   def data
@@ -43,11 +43,4 @@ class InvoiceTest<Minitest::Test
     assert_equal "2014-06-30 14:15:05 UTC", invoice.updated_at
   end
 
-  # def test_that_invoice_can_talk_to_invoice_repository
-  #   invoice_repository = InvoiceRepository.load('./data/fixtures/invoices_sample.csv')
-  #   binding.pry
-  #   repository_invoice = invoice_repository.invoices.repository
-  #   repository_invoice.find_by_merchant_id(26)
-  #
-  # end
 end

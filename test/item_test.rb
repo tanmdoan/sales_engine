@@ -1,10 +1,10 @@
 require './test/test_helper'
 
 class ItemTest<Minitest::Test
-  attr_reader :item
+  attr_reader :item, :sales_engine
 
   def setup
-    @item = Item.new(data)
+    @item = Item.new(data, sales_engine)
   end
 
   def data
