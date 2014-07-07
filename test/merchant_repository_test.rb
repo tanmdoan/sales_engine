@@ -1,10 +1,11 @@
 require './test/test_helper'
+require 'bigdecimal'
 
 class MerchantRepositoryTest < Minitest::Test
   attr_reader :merchant_repository
 
   def setup
-    @merchant_repository = MerchantRepository.load(self,'./data/fixtures/merchants_sample.csv')
+    @merchant_repository ||= MerchantRepository.load(self,'./data/fixtures/merchants_sample.csv')
   end
 
   def test_that_merchant_repository_contains_merchant_data
@@ -43,5 +44,6 @@ class MerchantRepositoryTest < Minitest::Test
     results = merchant_repository.random
     assert_equal 1, results.count
   end
+
 
 end
