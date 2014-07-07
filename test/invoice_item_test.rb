@@ -3,7 +3,7 @@ require './test/test_helper'
 class InvoiceItemTest<Minitest::Test
     attr_reader :invoice_item
   def setup
-    @invoice_item = InvoiceItem.new(data)
+    @invoice_item = InvoiceItem.new(data, sales_engine = nil)
   end
 
   def data

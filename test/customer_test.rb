@@ -16,22 +16,22 @@ class CustomerTest<Minitest::Test
   end
 
   def test_it_has_a_id
-    customer = Customer.new(data)
+    customer = Customer.new(data, nil)
     assert_equal "1", customer.id
   end
 
   def test_it_has_a_first_name
-    customer = Customer.new(data)
+    customer = Customer.new(data, nil)
     assert_equal "John Bob", customer.first_name
   end
 
   def test_it_is_created_at
-    customer = Customer.new(data)
+    customer = Customer.new(data, nil)
     assert_equal "2014-06-14 12:12:12 UTC", customer.created_at
   end
 
   def test_it_is_updated_at
-    customer = Customer.new(data)
+    customer = Customer.new(data, nil)
     assert_equal "2014-06-30 14:15:05 UTC", customer.updated_at
   end
 end

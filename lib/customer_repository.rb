@@ -33,11 +33,9 @@ class CustomerRepository
 
  def find_by_last_name(last_name)
    last_name = last_name.to_s
-   selected = []
    customers.detect do |customer|
-     selected << customer if customer.last_name == last_name
+    customer.last_name == last_name
    end
-   selected
  end
 
  def find_all_by_first_name(first_name)

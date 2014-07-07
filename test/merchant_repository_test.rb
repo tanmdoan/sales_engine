@@ -16,7 +16,6 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_merchant_id
-    # skip
     results = merchant_repository.find_by_id(3)
     assert_equal "3", results.id
   end

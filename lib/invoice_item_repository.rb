@@ -54,11 +54,9 @@ class InvoiceItemRepository
 
   def find_by_quantity(quantity)
     quantity = quantity.to_s
-    selected = []
     invoice_items.detect do |invoice_item|
-      selected << invoice_item if invoice_item.quantity == quantity
+      invoice_item.quantity == quantity
     end
-    selected
   end
 
   def find_all_by_quantity(quantity)
@@ -70,11 +68,9 @@ class InvoiceItemRepository
 
   def find_by_unit_price(unit_price)
     unit_price = unit_price.to_s
-    selected = []
     invoice_items.detect do |invoice_item|
-      selected << invoice_item if invoice_item.unit_price == unit_price
+      invoice_item.unit_price == unit_price
     end
-    selected
   end
 
   def find_all_by_unit_price(unit_price)

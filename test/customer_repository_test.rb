@@ -1,5 +1,6 @@
 require './test/test_helper'
 
+
 class CustomerRepositoryTest < Minitest::Test
  attr_reader :customer_repository
 
@@ -17,26 +18,17 @@ class CustomerRepositoryTest < Minitest::Test
 
  def test_it_can_find_by_customers_id
    results = customer_repository.find_by_id(1)
-   assert_equal 1, results.count
-   results.each do |customer|
-     assert_equal "1", customer.id
-   end
+     assert_equal "1", results.id
  end
 
  def test_it_can_find_by_customers_first_name
    results = customer_repository.find_by_first_name("Joey")
-   assert_equal 1, results.count
-   results.each do |customer|
-     assert_equal "Joey", customer.first_name
-   end
+      assert_equal "Joey", results.first_name
  end
 
  def test_it_can_find_by_customers_last_name
    results = customer_repository.find_by_last_name("Ondricka")
-   assert_equal 1, results.count
-   results.each do |customer|
-     assert_equal "Ondricka", customer.last_name
-   end
+     assert_equal "Ondricka", results.last_name
  end
 
  def test_it_can_find_all_customers_by_first_name
