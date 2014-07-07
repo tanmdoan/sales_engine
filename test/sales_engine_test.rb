@@ -117,20 +117,28 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_sales_engine_can_rank_merchants_by_revenue
+    skip
     most = engine.merchant_repository.most_revenue(3)
     assert_equal "Dicki-Bednar", engine.merchant_repository.most_revenue.first.name
     assert_equal "Okuneva, Prohaska and Rolfson", engine.merchant_repository.most_revenue.last.name
   end
 
   def test_sales_engine_can_rank_merchants_by_most_items
+    skip
     most = engine.merchant_repository.most_items(5)
     assert_equal "Kassulke, O'Hara and Quitzon", engine.merchant_repository.most_revenue.first.name
     assert_equal "Daugherty Group", engine.merchant_repository.most_revenue.last.name
 
   def test_it_can_return_revenue_for_a_specific_date
+    skip
     date = "Tue, 20 Mar 2012"
     revenue = engine.merchant_repository.revenue(date)
     assert_equal BigDecimal.new("2549722.91"), revenue
+  end
+
+  def test_it_can_find_reports_all_revenue_for_a_merchant
+    engine.merchnat_repository.find_by_name("Willms and Sons")
+    assert_equal BigDecimal.new("1148393.74"), merchant.revenue 
   end
 
 end

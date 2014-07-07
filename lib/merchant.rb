@@ -19,7 +19,21 @@ class Merchant
   end
 
   def all_successful_invoices
-    sales_engine.invoice_repository.find_all_by_status("shipped")
+    invoices.select do |invoice|
+      invoice.status == "shipped"
+    end
+  end
+
+  def all_successful_invoices_by_date(date)
+    all_successful_invoices.select do |invoice|
+      Date.parse(invoice.created_at) == date
+    end
+
+
+  def revenue
+    all_successful_invoices.inject(0) do |sum, invoice_item|
+      sum += invoice_item.charged
+    end
   end
 
 
