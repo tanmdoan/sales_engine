@@ -18,21 +18,13 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_transaction_id
-    # skip
     results = transaction_repository.find_by_id(3)
-    assert_equal 1, results.count
-    results.each do |transaction|
-      assert_equal "3", transaction.id
-    end
+    assert_equal "3", results.id
   end
 
   def test_it_can_find_by_invoice_id
-    # skip
     results = transaction_repository.find_by_invoice_id(1)
-    assert_equal 1, results.count
-    results.each do |transaction|
-      assert_equal "1", transaction.invoice_id
-    end
+    assert_equal "1", results.invoice_id
   end
 
   def test_it_can_find_by_credit_card_number

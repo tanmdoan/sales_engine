@@ -17,18 +17,12 @@ class ItemRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_item_id
     results = item_repository.find_by_id(3)
-    assert_equal 1, results.count
-    results.each do |item|
-      assert_equal "3", item.id
-    end
+    assert_equal "3", results.id
   end
 
   def test_it_can_find_by_item_name
     results = item_repository.find_by_name("Item Qui Esse")
-    assert_equal 1, results.count
-    results.each do |item|
-      assert_equal "Item Qui Esse", item.name
-    end
+    assert_equal "Item Qui Esse", results.name
   end
 
   def test_it_can_find_by_item_by_merchant_id
