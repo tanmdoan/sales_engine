@@ -5,11 +5,6 @@ require_relative 'merchant_repository'
 require_relative 'customer_repository'
 require_relative 'invoice_item_repository'
 
-
-
-
-# require 'pry'
-
 class SalesEngine
   attr_reader :item_repository, :transaction_repository,
               :invoice_item_repository,
@@ -21,13 +16,6 @@ class SalesEngine
 
 
   def startup
-    # items = ItemParser.load(self)
-    # transactions = TransactionParser.load.parse
-    # invoices = InvoiceParser.load.parse
-    # # invoice_items = InvoiceItemParser.load.parse
-    # merchants = MerchantParser.load.parse
-    # customers = CustomerParser.load.parse
-
 
     @item_repository ||= ItemRepository.load(self)
     @merchant_repository ||= MerchantRepository.load(self)
@@ -36,5 +24,4 @@ class SalesEngine
     @invoice_item_repository ||= InvoiceItemRepository.load(self)
     @customer_repository ||= CustomerRepository.load(self)
   end
-# binding.pry
 end

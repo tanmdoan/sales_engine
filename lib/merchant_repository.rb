@@ -26,11 +26,9 @@ class MerchantRepository
 
    def find_by_name(name)
      name = name.to_s
-    #  selected = []
      merchants.detect do |merchant|
-       merchant.name == name # selected << merchant if
+       merchant.name == name
      end
-    #  selected
    end
 
    def find_all_by_name(name)
