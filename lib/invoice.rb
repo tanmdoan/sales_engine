@@ -37,4 +37,8 @@ class Invoice
     transactions.any?(&:successful?)
   end
 
+  def invoice_items_total
+    invoice_items.inject(0) {|sum, invoice_items| sum + invoice_items.charged}
+  end
+
 end

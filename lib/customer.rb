@@ -22,32 +22,9 @@ class Customer
     invoices.select(&:successful?)
   end
 
-  def merchant_tally
-  end
-
   def favorite_merchant
-    grouped_merchants = successful_invoices.group_by do |invoice|
-      invoice.merchant_id
-    end
-
-    grouped_merchants.max_by {|merchant| merchant.count}[-1][0].merchant
-
-
-
-
-
-
-
-    # merchants = transactions.map {|t| t.merchant if t.result == 'success'}
-    # merchants.group_by {|i| item}.values.values.max_by(&:size).first
-    # successful_transactions = transactions.select {|transaction|
-      # transaction.result == 'success'}
-
-    # successful_transactions.group_by {|item| item} #.values.max_by(&:size).first
-    # invoice_transactions = successful_transactions.map {|transaction|
-    #   transaction.invoice}
-    #
-    # best_merchant = invoice_transactions.map {|invoice| invoice.merchant}.first
+    successful_invoices.group_by {|invoice|
+    invoice.merchant_id}.max_by {|merchant| merchant.count}[-1][0].merchant
   end
 
 end
