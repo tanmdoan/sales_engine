@@ -30,19 +30,17 @@ class Merchant
     end
   end
 
-  def all_succesful_invoices_by_invoice_id
+  def all_succesful_invoice_items_by_invoice_id
     all_successful_invoices.select do |invoice|
       sales_engine.invoice_item_repository.find_by_invoice_id(invoice.id)
     end
   end
 
   def revenue
-    all_succesful_invoices_by_invoice_id.inject(0) do |sum, invoice_item|
-      sum + invoice_item.charged
+    all_succesful_invoice_items_by_invoice_id.inject(0) do |sum, ii|
+      sum + ii.charged
     end
   end
-
-
 
 
 end

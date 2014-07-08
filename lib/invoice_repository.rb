@@ -17,42 +17,36 @@ class InvoiceRepository
   end
 
   def find_by_id(id)
-    id = id.to_s
     results = invoices.detect do |invoice|
       invoice.id == id
     end
   end
 
   def find_by_customer_id(customer_id)
-    customer_id = customer_id.to_s
     invoices.detect do |invoice|
     invoice.customer_id == customer_id
     end
   end
 
   def find_all_by_customer_id(customer_id)
-    customer_id = customer_id.to_s
     invoices.select do |invoice|
       invoice.customer_id == customer_id
     end
   end
 
   def find_by_merchant_id(merchant_id)
-    merchant_id = merchant_id.to_s
     invoices.detect do |invoice|
       invoice.merchant_id == merchant_id
     end
   end
 
   def find_all_by_merchant_id(merchant_id)
-    merchant_id = merchant_id.to_s
     invoices.select do |invoice|
       invoice.merchant_id == merchant_id
     end
   end
 
   def find_all_by_status(status)
-    status = status.to_s
     invoices.select do |invoice|
       invoice.status == status
     end

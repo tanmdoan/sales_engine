@@ -18,7 +18,6 @@ class ItemRepository
   end
 
 def find_by_id(id)
-    id = id.to_s
     results = items.detect do |item|
       item.id == id
     end
@@ -26,19 +25,15 @@ def find_by_id(id)
 
 
   def find_by_name(name)
-    name = name.to_s
     items.detect do |item|
     item.name == name
     end
   end
 
   def find_by_merchant_id(merchant_id)
-    merchant_id = merchant_id.to_s
-    selected = []
     items.detect do |item|
-      selected << item if item.merchant_id == merchant_id
+      item.merchant_id == merchant_id
     end
-    selected
   end
 
   def find_all_by_merchant_id(merchant_id)
@@ -50,16 +45,12 @@ def find_by_id(id)
 
 
   def find_by_unit_price(unit_price)
-    unit_price = unit_price.to_s
-    selected = []
     items.detect do |item|
-      selected << item if item.unit_price == unit_price
+    item.unit_price == unit_price
     end
-    selected
   end
 
   def find_all_by_unit_price(unit_price)
-    unit_price = unit_price.to_s
     items.select do |item|
       item.unit_price == unit_price
     end

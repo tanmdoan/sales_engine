@@ -17,21 +17,18 @@ class TransactionRepository
   end
 
   def find_by_id(id)
-    id = id.to_s
     transactions.detect do |transaction|
       transaction.id == id
     end
   end
 
   def find_by_invoice_id(invoice_id)
-    invoice_id = invoice_id.to_s
     transactions.detect do |transaction|
       transaction.invoice_id == invoice_id
     end
   end
 
   def find_all_by_invoice_id(invoice_id)
-    invoice_id = invoice_id.to_s
     transactions.select do |transaction|
       transaction.invoice_id == invoice_id
     end
@@ -54,7 +51,6 @@ class TransactionRepository
   end
 
   def find_by_result(result)
-    result = result.to_s
     selected = []
     transactions.detect do |transaction|
       selected << transaction if transaction.result == result
@@ -63,7 +59,6 @@ class TransactionRepository
   end
 
   def find_all_by_result(result)
-    result = result.to_s
     transactions.select do |transaction|
       transaction.result == result
     end

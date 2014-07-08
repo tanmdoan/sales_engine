@@ -18,21 +18,18 @@ class MerchantRepository
    end
 
    def find_by_id(id)
-     id = id.to_s
      merchants.detect do |merchant|
        merchant.id == id
      end
    end
 
    def find_by_name(name)
-     name = name.to_s
      merchants.detect do |merchant|
        merchant.name == name
      end
    end
 
    def find_all_by_name(name)
-     name = name.to_s
      merchants.select do |merchant|
        merchant.name == name
      end
@@ -59,7 +56,8 @@ class MerchantRepository
    end
 
    def all_invoices_by_date(date)
-     merchant.all_successful_invoices.select do |invoice|
+     return []
+     @merchants.all_successful_invoices.select do |invoice|
        Date.parse(invoice.created_at) == date
      end
    end

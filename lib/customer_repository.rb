@@ -17,7 +17,6 @@ class CustomerRepository
  end
 
  def find_by_id(id)
-   id = id.to_s
    results = customers.detect do |customer|
      customer.id == id
    end
@@ -25,28 +24,24 @@ class CustomerRepository
 
 
  def find_by_first_name(first_name)
-   first_name = first_name.to_s
    customers.detect do |customer|
      customer.first_name == first_name
    end
  end
 
  def find_by_last_name(last_name)
-   last_name = last_name.to_s
    customers.detect do |customer|
     customer.last_name == last_name
    end
  end
 
  def find_all_by_first_name(first_name)
-   first_name = first_name.to_s
    customers.select do |customer|
      customer.first_name == first_name
    end
  end
 
  def find_all_by_last_name(lastname)
-   name = name.to_s
    customers.select do |customer|
      customer.last_name == lastname
    end

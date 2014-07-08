@@ -9,6 +9,8 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_that_merchant_repository_contains_merchant_data
+    require "pry"
+    binding.pry
     assert 10 <= merchant_repository.merchants.count
   end
 
