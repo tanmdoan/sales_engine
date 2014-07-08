@@ -33,4 +33,8 @@ class Invoice
     sales_engine.merchant_repository.find_by_id(merchant_id)
   end
 
+  def successful?
+    transactions.any?(&:successful?)
+  end
+
 end

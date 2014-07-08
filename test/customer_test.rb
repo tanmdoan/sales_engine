@@ -34,4 +34,8 @@ class CustomerTest<Minitest::Test
     customer = Customer.new(data, nil)
     assert_equal "2014-06-30 14:15:05 UTC", customer.updated_at
   end
+
+  def test_customer_can_collect_successful_transactions
+    transactions = 
+  end
 end

@@ -1,19 +1,24 @@
+require './test/test_helper'
 require 'bigdecimal'
 require 'pry'
 
 
 class SalesEngineTest < Minitest::Test
 
-  attr_reader :engine, :invoice_repository, :item_repository, :customer_repository, :merchant_repository
+  attr_reader :engine, :invoice_repository, :item_repository, :customer_repository, :merchant_repository,
+  :invoice_items
 
   def setup
-    # @invoice_repository ||= InvoiceRepository.load(self, './data/fixtures/invoices_sample.csv')
-    # @item_repository ||= ItemRepository.load(self, './data/fixtures/items_sample.csv')
-    # @customer_repository ||= CustomerRepository.load(self, './data/fixtures/customers_sample.csv')
-    # @merchant_repository ||= MerchantRepository.load(self, './data/fixtures/merchants_sample.csv')
 
     @engine = SalesEngine.new
-    @engine.startup
+    engine.startup
+
+    # @invoice_repository = InvoiceRepository.load(self, './data/fixtures/invoices_sample.csv')
+    # @item_repository = ItemRepository.load(self, './data/fixtures/items_sample.csv')
+    # @customer_repository = CustomerRepository.load(self, './data/fixtures/customers_sample.csv')
+    # @merchant_repository = MerchantRepository.load(self, './data/fixtures/merchants_sample.csv')
+    # @invoice_item = InvoiceItemRepository.load(self, './data/fixtures/invoice_items_sample.csv')
+
   end
 
   # def test_customer_repository_exist_on_engine_start_up
@@ -26,8 +31,6 @@ class SalesEngineTest < Minitest::Test
   #
   # def test_sales_engine_can_find_by_all_items_sold_by_a_merchant
   #   merchant   = engine.merchant_repository.find_by_name("Kirlin, Jakubowski and Smitham")
-  #   merchant_id = merchant.id
-  #   items       = engine.item_repository.find_by_merchant_id(merchant_id)
   #   assert_equal 33, merchant.items.count
   #   item = merchant.items.find {|i| i.name == 'Item Consequatur Odit' }
   #   assert_equal 'Item Consequatur Odit', item.name
@@ -35,15 +38,11 @@ class SalesEngineTest < Minitest::Test
   #
   # def test_sales_engine_can_find_all_invoices_associated_with_a_merchant
   #   merchant    = engine.merchant_repository.find_by_name("Kirlin, Jakubowski and Smitham")
-  #   merchant_id = merchant.id
-  #   invoices    = engine.invoice_repository.find_by_merchant_id(merchant_id)
   #   assert_equal 43, merchant.invoices.count
   # end
   #
   # def test_sales_engine_can_find_all_transactions_associated_with_an_invoice
   #   invoice = engine.invoice_repository.find_by_id(1002)
-  #   invoice_id = invoice.id
-  #   transactions = engine.transaction_repository.find_by_invoice_id(invoice_id)
   #   assert_equal 1, invoice.transactions.count
   # end
   #
@@ -107,47 +106,28 @@ class SalesEngineTest < Minitest::Test
   #   customer = engine.customer_repository.find_by_id(999)
   #   assert_equal 7, customer.invoices.count
   # end
-
-  def test_sales_engine_can_find_invoice_customer_associated_with_transactions
-    # transaction = engine.transaction_repository.find_by_id(1138)
-    # invoice_id = transaction.invoice_id
-    # invoice = engine.invoice_repository.find_by_id(invoice_id)
-    # binding.pry
-    #
-    # customer_id = invoice.customer_id
-
-
-    transaction = engine.transaction_repository.find_by_id(1138)
-    invoice_id   = transaction.invoice_id
-    invoice     = engine.invoice_repository.find_by_id(invoice_id)
-    customer_id  = invoice.customer_id
-    customer     = engine.customer_repository.find_by_id(customer_id)
-    # binding.pry
-    assert_equal "Chloe", transaction.invoice.customer.first_name
-
-  # def test_it_reports_all_revenue_for_a_merchant
-  #   merchant = engine.merchant_repository.find_by_name("Willms and Sons")
-  #   merchant_id = merchant.id
-  #   invoices = engine.invoice_repository.find_all_by_merchant_id(merchant_id)
-  #   invoice_ids = invoices.map do |invoice|
-  #     invoice.id
-  #   end
-  #   invoice_items = invoice_ids.map do |invoice_id|
-  #     engine.invoice_item_repository.find_by_invoice_id(invoice_id)
-  #     binding.pry
-  #   end
-  #   assert_equal BigDecimal.new("1148393.74"), merchant.revenue
-  end
-
-  def test_it_can_return_an_array_of_transaction_instances_associated_with_a_customer
-    customer = engine.customer_repository.find_by_id(2)
-    assert_equal 1, customer.transactions.count
-  end
-
+  #
+  # def test_sales_engine_can_find_invoice_customer_associated_with_transactions
+  #   transaction = engine.transaction_repository.find_by_id(1138)
+  #   assert_equal "Chloe", transaction.invoice.customer.first_name
+  # end
+  # # def test_it_reports_all_revenue_for_a_merchant
+  # #   merchant = engine.merchant_repository.find_by_name("Willms and Sons")
+  # #   assert_equal BigDecimal.new("1148393.74"), merchant.revenue
+  # # end
+  #
+  # def test_it_can_return_an_array_of_transaction_instances_associated_with_a_customer
+  #   customer = engine.customer_repository.find_by_id(2)
+  #   assert_equal 1, customer.transactions.count
+  # end
+  #
   def test_it_can_return_an_instance_of_merchant_where_customer_has_the_most_transactions
     customer = engine.customer_repository.find_by_id(2)
-    binding.pry
     assert_equal "Shields, Hirthe and Smith", customer.favorite_merchant.name
+  end
 
+  def test_it_can_give_a_collection_of_successful_transactions
+    customer = engine.customer_repository.find_by_id(1)
+    assert_equal 7, customer.successful_invoices.count
   end
 end

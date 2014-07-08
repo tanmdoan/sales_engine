@@ -11,17 +11,24 @@ class SalesEngine
               :customer_repository, :merchant_repository,
               :invoice_repository
   def initialize(dir = nil)
-    startup
   end
 
 
   def startup
 
-    @item_repository ||= ItemRepository.load(self)
-    @merchant_repository ||= MerchantRepository.load(self)
-    @transaction_repository ||= TransactionRepository.load(self)
-    @invoice_repository ||= InvoiceRepository.load(self)
-    @invoice_item_repository ||= InvoiceItemRepository.load(self)
-    @customer_repository ||= CustomerRepository.load(self)
+    @item_repository ||= ItemRepository.load(self, './data/items.csv')
+    @merchant_repository ||= MerchantRepository.load(self, './data/merchants.csv')
+    @transaction_repository ||= TransactionRepository.load(self, './data/transactions.csv')
+    @invoice_repository ||= InvoiceRepository.load(self, './data/invoices.csv')
+    @invoice_item_repository ||= InvoiceItemRepository.load(self, './data/invoice_items.csv')
+    @customer_repository ||= CustomerRepository.load(self, './data/customers.csv')
+  end
+
+  def fixtures_startup
+    @invoice_repository ||= InvoiceRepository.load(self, './data/fixtures/invoices_sample.csv')
+    @item_repository ||= ItemRepository.load(self, './data/fixtures/items_sample.csv')
+    @customer_repository ||= CustomerRepository.load(self, './data/fixtures/customers_sample.csv')
+    @merchant_repository ||= MerchantRepository.load(self, './data/fixtures/merchants_sample.csv')
+    @invoice_item ||= InvoiceItemRepository.load(self, './data/fixtures/invoice_items_sample.csv')
   end
 end

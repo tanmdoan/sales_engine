@@ -8,7 +8,7 @@ class InvoiceRepository
     @invoices = invoices
   end
 
-  def self.load(sales_engine, file ='./data/invoices.csv')
+  def self.load(sales_engine, file ='./data/fixtures/invoices_sample.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
       Invoice.new(row, sales_engine)
@@ -51,7 +51,7 @@ class InvoiceRepository
       invoice.status == status
     end
   end
-  
+
   def find_all_by_status(status)
     invoices.select do |invoice|
       invoice.status == status

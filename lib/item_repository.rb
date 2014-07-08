@@ -9,7 +9,7 @@ class ItemRepository
     @items = items
   end
 
-  def self.load(sales_engine, file ='./data/items.csv')
+  def self.load(sales_engine, file ='./data/customers.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
     rows = data.map do |row|
       Item.new(row, sales_engine)
