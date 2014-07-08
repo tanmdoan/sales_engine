@@ -26,11 +26,11 @@ class Invoice
   end
 
   def customer
-    sales_engine.customer_repository.find_by_id(id)
+    sales_engine.customer_repository.find_by_id(customer_id)
   end
 
   def merchant
-    sales_engine.merchant_repository.find_by_id(id)
+    sales_engine.merchant_repository.find_by_id(merchant_id)
   end
 
 end

@@ -43,7 +43,6 @@ class ItemRepository
   end
 
   def find_all_by_merchant_id(merchant_id)
-    merchant_id = merchant_id.to_s
     items.select do |item|
       item.merchant_id == merchant_id
     end

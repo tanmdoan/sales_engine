@@ -8,7 +8,7 @@ class Item
     @name        = data[:name]
     @description = data[:description]
     @unit_price  = convert_to_big_decimal(data[:unit_price])
-    @merchant_id = data[:merchant_id]
+    @merchant_id = data[:merchant_id].to_i
     @created_at  = data[:created_at]
     @updated_at  = data[:updated_at]
     @sales_engine = sales_engine
