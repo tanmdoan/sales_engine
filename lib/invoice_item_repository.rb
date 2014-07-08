@@ -77,4 +77,8 @@ class InvoiceItemRepository
     selected << invoice_items.sample
     selected
   end
+
+  def inspect
+    "#<#{self.class} #{@merchants.size} rows>"
+  end
 end

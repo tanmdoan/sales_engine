@@ -52,5 +52,9 @@ class CustomerRepository
    selected << customers.sample
    selected
  end
+ 
+ def inspect
+ "#<#{self.class} #{@merchants.size} rows>"
+end
 
 end

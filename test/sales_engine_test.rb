@@ -137,7 +137,7 @@ class SalesEngineTest < Minitest::Test
   #     binding.pry
   #   end
   #   assert_equal BigDecimal.new("1148393.74"), merchant.revenue
-  # end
+  end
 
   def test_it_can_return_an_array_of_transaction_instances_associated_with_a_customer
     customer = engine.customer_repository.find_by_id(2)

@@ -17,7 +17,7 @@ class ItemRepository
     new(rows)
   end
 
-def find_by_id(id)
+  def find_by_id(id)
     results = items.detect do |item|
       item.id == id
     end
@@ -60,6 +60,10 @@ def find_by_id(id)
     selected = []
     selected << items.sample
     selected
+  end
+
+  def inspect
+    "#<#{self.class} #{@merchants.size} rows>"
   end
 
 end

@@ -62,11 +62,12 @@ class MerchantRepository
      end
    end
 
+  def revenue(date = nil)
+    all_invoices_by_date(date)
 
+  end
 
-
-   def revenue(date = nil)
-     all_invoices_by_date(date)
-
-   end
+  def inspect
+    "#<#{self.class} #{@merchants.size} rows>"
+  end
 end
