@@ -157,6 +157,12 @@ class SalesEngineTest < Minitest::Test
   def test_it_can_return_an_array_of_transaction_instances_associated_with_a_customer
     customer = engine.customer_repository.find_by_id(2)
     assert_equal 1, customer.transactions.count
+  end
+
+  def test_it_can_return_an_instance_of_merchant_where_customer_has_the_most_transactions
+    customer = engine.customer_repository.find_by_id(2)
     binding.pry
+    assert_equal "Shields, Hirthe and Smith", customer.favorite_merchant.name
+
   end
 end

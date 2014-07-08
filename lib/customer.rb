@@ -18,4 +18,17 @@ class Customer
     invoices.map {|invoice| invoice.transactions}.flatten
   end
 
+  def favorite_merchant
+    # merchants = transactions.map {|t| t.merchant if t.result == 'success'}
+    # merchants.group_by {|i| item}.values.values.max_by(&:size).first
+    successful_transactions = transactions.select {|transaction|
+      transaction.result == 'success'}
+
+    # successful_transactions.group_by {|item| item} #.values.max_by(&:size).first
+    # invoice_transactions = successful_transactions.map {|transaction|
+    #   transaction.invoice}
+    #
+    # best_merchant = invoice_transactions.map {|invoice| invoice.merchant}.first
+  end
+
 end
