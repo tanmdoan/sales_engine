@@ -5,7 +5,7 @@ class CustomerRepositoryTest < Minitest::Test
  attr_reader :customer_repository
 
  def setup
-   @customer_repository = CustomerRepository.load(self, "./data/fixtures/customers_sample.csv")
+   @customer_repository ||= CustomerRepository.load(self, "./data/fixtures/customers_sample.csv")
  end
 
  def test_that_customer_repository_contains_customer_data

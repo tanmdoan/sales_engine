@@ -17,4 +17,32 @@ class Merchant
   def invoices
     sales_engine.invoice_repository.find_all_by_merchant_id(id)
   end
+
+  def all_successful_invoices
+    invoices.select do |invoice|
+      invoice.status == "shipped"
+    end
+  end
+
+  def all_successful_invoices_by_date(date)
+    all_successful_invoices.select do |invoice|
+      Date.parse(invoice.created_at) == date
+    end
+  end
+
+  def all_succesful_invoices_by_invoice_id
+    all_successful_invoices.select do |invoice|
+      sales_engine.invoice_item_repository.find_by_invoice_id(invoice.id)
+    end
+  end
+
+  def revenue
+    all_succesful_invoices_by_invoice_id.inject(0) do |sum, invoice_item|
+      sum + invoice_item.charged
+    end
+  end
+
+
+
+
 end

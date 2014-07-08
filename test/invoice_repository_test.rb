@@ -4,7 +4,7 @@ class InvoiceRepositoryTest < Minitest::Test
   attr_reader :invoice_repository
 
   def setup
-      @invoice_repository = InvoiceRepository.load(self, './data/fixtures/invoices_sample.csv')
+      @invoice_repository ||= InvoiceRepository.load(self, './data/fixtures/invoices_sample.csv')
   end
 
   def test_that_invoice_repository_contains_invoice_data
@@ -38,8 +38,8 @@ class InvoiceRepositoryTest < Minitest::Test
     assert_equal "26", results.merchant_id
   end
 
-  def test_it_can_find_invoice_by_status
-    results = invoice_repository.find_by_status("shipped")
+  def test_it_can_find_all_by_status
+    results = invoice_repository.find_all_by_status("shipped")
     assert_equal 10, results.count
     results.each do |invoice|
       assert_equal "shipped", invoice.status

@@ -29,4 +29,5 @@ class MerchantTest<Minitest::Test
     merchant = Merchant.new(data, sales_engine=nil)
     assert_equal "2014-06-30 14:15:05 UTC", merchant.updated_at
   end
+
 end

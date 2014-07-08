@@ -51,7 +51,7 @@ class InvoiceRepository
     end
   end
 
-  def find_by_status(status)
+  def find_all_by_status(status)
     status = status.to_s
     invoices.select do |invoice|
       invoice.status == status

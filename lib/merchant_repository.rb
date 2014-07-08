@@ -38,9 +38,37 @@ class MerchantRepository
      end
    end
 
+   def find_by_date(date)
+     date = created_at
+     merchants.detect do |merchant|
+       merchant.created_at == date
+     end
+   end
+
+   def find_all_by_date(date)
+     date = created_at
+     merchants.select do |merchant|
+       merchant.created_at == date
+     end
+   end
+
    def random
      selected = []
      selected << merchants.sample
      selected
+   end
+
+   def all_invoices_by_date(date)
+     merchant.all_successful_invoices.select do |invoice|
+       Date.parse(invoice.created_at) == date
+     end
+   end
+
+
+
+
+   def revenue(date = nil)
+     all_invoices_by_date(date)
+
    end
 end

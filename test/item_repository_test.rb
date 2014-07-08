@@ -4,7 +4,7 @@ class ItemRepositoryTest < Minitest::Test
   attr_reader :item_repository
 
   def setup
-    @item_repository = ItemRepository.load(self, './data/fixtures/items_sample.csv')
+    @item_repository ||= ItemRepository.load(self, './data/fixtures/items_sample.csv')
   end
 
   def test_that_item_repository_contains_transaction_data

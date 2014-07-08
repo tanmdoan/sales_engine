@@ -4,7 +4,7 @@ class InvoiceItemRepositoryTest < Minitest::Test
   attr_reader :invoice_item_repository
 
   def setup
-    @invoice_item_repository = InvoiceItemRepository.load(self, './data/fixtures/invoice_items_sample.csv')
+    @invoice_item_repository ||= InvoiceItemRepository.load(self, './data/fixtures/invoice_items_sample.csv')
   end
 
   def test_that_invoice_item_repository_contains_invoice_item_data

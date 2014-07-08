@@ -1,6 +1,9 @@
-require './test/test_helper'
+require 'bigdecimal'
 require 'pry'
+
+
 class SalesEngineTest < Minitest::Test
+
   attr_reader :engine, :invoice_repository, :item_repository, :customer_repository, :merchant_repository
 
   def setup
@@ -121,6 +124,17 @@ class SalesEngineTest < Minitest::Test
     customer     = engine.customer_repository.find_by_id(customer_id)
     # binding.pry
     assert_equal "Chloe", transaction.invoice.customer.first_name
-  end
 
+  def test_it_reports_all_revenue_for_a_merchant
+    merchant = engine.merchant_repository.find_by_name("Willms and Sons")
+    merchant_id = merchant.id
+    invoices = engine.invoice_repository.find_all_by_merchant_id(merchant_id)
+    invoice_ids = invoices.map do |invoice|
+      invoice.id
+    end
+    invoice_items = invoice_ids.map do |invoice_id|
+      engine.invoice_item_repository.find_by_invoice_id(invoice_id)
+    end
+    assert_equal BigDecimal.new("1148393.74"), merchant.revenue
+  end
 end
