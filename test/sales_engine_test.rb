@@ -115,7 +115,12 @@ class SalesEngineTest < Minitest::Test
     merchant = engine.merchant_repository.find_by_name("Dicki-Bednar")
     assert_equal BigDecimal.new("1148393.74"), merchant.revenue
   end
-  #
+
+  def test_it_reports_all_revenue_by_date_for_a_merchant
+    merchant = engine.merchant_repository.find_by_name("Willms and Sons")
+    date     = Date.parse "Fri, 09 Mar 2012"
+    assert_equal BigDecimal.new("8373.29"), merchant.revenue(date)
+  end
   # def test_it_can_return_an_array_of_transaction_instances_associated_with_a_customer
   #   customer = engine.customer_repository.find_by_id(2)
   #   assert_equal 1, customer.transactions.count

@@ -23,7 +23,24 @@ class Merchant
     invoices.select {|invoice| invoice.successful?}
   end
 
-  def revenue
+  def successful_invoice_dates(date)
+    successful_invoices.select {|invoice| Date.parse(invoice.created_at) == date }
+  end
+
+
+  def revenue_with_date(date)
+    successful_invoice_dates(date).inject(0) {|sum, invoice| sum + invoice.invoice_items_total}
+  end
+
+  def revenue(date = nil)
+    if date.nil?
+      revenue_without_date
+    else
+      revenue_with_date(date)
+    end
+  end
+
+  def revenue_without_date
     successful_invoices.inject(0) {|sum, invoice| sum + invoice.invoice_items_total}
   end
   # def all_successful_invoices
