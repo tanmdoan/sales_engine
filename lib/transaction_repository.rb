@@ -35,27 +35,21 @@ class TransactionRepository
   end
 
   def find_by_credit_card_number(credit_card_number)
-    credit_card_number = credit_card_number.to_s
-    selected = []
     transactions.detect do |transaction|
-      selected << transaction if transaction.credit_card_number == credit_card_number
+      transaction.credit_card_number == credit_card_number
     end
-    selected
   end
 
   def find_all_by_credit_card_number(credit_card_number)
-    credit_card_number = credit_card_number.to_s
     transactions.select do |transaction|
       transaction.credit_card_number == credit_card_number
     end
   end
 
   def find_by_result(result)
-    selected = []
     transactions.detect do |transaction|
-      selected << transaction if transaction.result == result
+      transaction.result == result
     end
-    selected
   end
 
   def find_all_by_result(result)
@@ -65,9 +59,7 @@ class TransactionRepository
   end
 
   def random
-    selected = []
-    selected << transactions.sample
-    selected
+    transactions.sample
   end
 
 

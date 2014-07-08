@@ -57,9 +57,7 @@ class ItemRepository
   end
 
   def random
-    selected = []
-    selected << items.sample
-    selected
+    items.sample
   end
 
   def inspect

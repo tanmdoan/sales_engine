@@ -7,8 +7,8 @@ class InvoiceItem
   # include UnitConversion
 
   def initialize(data, sales_engine)
-    @id         = data[:id]
-    @item_id    = data[:item_id]
+    @id         = data[:id].to_i
+    @item_id    = data[:item_id].to_i
     @invoice_id = data[:invoice_id]
     @quantity   = data[:quantity].to_i
     @unit_price = convert_to_big_decimal(data[:unit_price])
@@ -17,9 +17,7 @@ class InvoiceItem
     @sales_engine = sales_engine
   end
 
-  def self.public_attributes
-    
-  end
+
   def item
     sales_engine.item_repository.find_by_id(item_id)
   end

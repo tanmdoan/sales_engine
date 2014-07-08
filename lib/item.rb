@@ -3,7 +3,7 @@ class Item
               :merchant_id, :created_at, :updated_at, :sales_engine
 
   def initialize(data, sales_engine)
-    @id          = data[:id]
+    @id          = data[:id].to_i
     @name        = data[:name]
     @description = data[:description]
     @unit_price  = data[:unit_price]

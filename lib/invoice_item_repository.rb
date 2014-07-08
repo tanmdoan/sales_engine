@@ -73,9 +73,7 @@ class InvoiceItemRepository
   end
 
   def random
-    selected = []
-    selected << invoice_items.sample
-    selected
+    invoice_items.sample
   end
 
   def inspect

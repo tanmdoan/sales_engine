@@ -46,6 +46,12 @@ class InvoiceRepository
     end
   end
 
+  def find_by_status(status)
+    invoices.detect do |invoice|
+      invoice.status == status
+    end
+  end
+  
   def find_all_by_status(status)
     invoices.select do |invoice|
       invoice.status == status
@@ -53,9 +59,7 @@ class InvoiceRepository
   end
 
   def random
-    selected = []
-    selected << invoices.sample
-    selected
+    invoices.sample
   end
 
   def inspect
