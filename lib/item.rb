@@ -37,6 +37,18 @@ class Item
     end
   end
 
+  def best_day
+    Date.parse(top_invoice.created_at)
+  end
+
+  def top_invoice
+    sales_engine.invoice_repository.find_by_id(top_invoice_item.invoice_id)
+  end
+
+  def top_invoice_item
+    successful_invoice_items.sort_by(&:quantity).reverse[0]
+  end
+
   def convert_to_big_decimal(cents)
     BigDecimal.new(convert_cents_to_dollars(cents).to_s)
   end
