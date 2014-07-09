@@ -1,6 +1,5 @@
 require './test/test_helper'
 require 'bigdecimal'
-require 'pry'
 
 
 class SalesEngineTest < Minitest::Test
@@ -129,6 +128,11 @@ class SalesEngineTest < Minitest::Test
   def test_it_can_return_an_instance_of_merchant_where_customer_has_the_most_transactions
     customer = engine.customer_repository.find_by_id(2)
     assert_equal "Shields, Hirthe and Smith", customer.favorite_merchant.name
+  end
+
+  def test_it_can_return_an_instance_of_customer_with_the_most_merchant_transactions
+    merchant = engine.merchant_repository.find_by_name("Terry-Moore")
+    assert_equal "Hammes", merchant.favorite_customer.last_name
   end
 
   def test_it_can_give_a_collection_of_successful_transactions

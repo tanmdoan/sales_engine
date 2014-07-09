@@ -43,6 +43,13 @@ class Merchant
   def revenue_without_date
     successful_invoices.inject(0) {|sum, invoice| sum + invoice.invoice_items_total}
   end
+
+
+  def favorite_customer
+    successful_invoices.group_by {|invoice| invoice.customer_id}.max_by {|customer|
+      customer[1].count}[-1][0].customer
+  end
+
   # def all_successful_invoices
   #   invoices.select do |invoice|
   #     invoice.status == "shipped"
