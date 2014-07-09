@@ -166,7 +166,15 @@ class SalesEngineTest < Minitest::Test
     assert_equal "Item Amet Accusamus", most.last.name
   end
 
+  def test_it_reports_most_items_sold
+    most = engine.item_repository.most_items(37)
+    assert_equal 37, most.size
+    assert_equal "Item Nam Magnam", most[1].name
+    assert_equal "Item Ut Quaerat", most.last.name
+  end
+
   def test_it_returns_the_date_with_the_most_sales_for_the_given_item_using_the_invoice_date
+    skip
     item = engine.item_repository.find_by_name "Item Accusamus Ut"
     possibilities = [
           Date.new(2012, 3, 18),

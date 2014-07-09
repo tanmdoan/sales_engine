@@ -78,5 +78,9 @@ class ItemRepository
     all.sort_by(&:revenue).reverse[0...number]
   end
 
+  def most_items(number)
+    number ||= all.count
+    all.sort_by(&:quantity).reverse[0...number]
+  end
 
 end

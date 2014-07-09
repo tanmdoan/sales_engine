@@ -31,9 +31,9 @@ class Item
       .inject(0) { |sum, invoice_item| sum + invoice_item.charged }
   end
 
-  def quantity_sold
-    succesful_invoice_items.inject(0) do |sum, invoice_item|
-       sum + invoice_item.total_revenue_per_item
+  def quantity
+    successful_invoice_items.inject(0) do |sum, invoice_item|
+       sum + invoice_item.quantity
     end
   end
 
