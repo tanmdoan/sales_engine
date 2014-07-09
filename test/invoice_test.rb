@@ -21,14 +21,14 @@ class InvoiceTest<Minitest::Test
   end
 
   def test_it_has_an_id
-    assert_equal "1", invoice.id
+    assert_equal 1, invoice.id
   end
 
   def test_it_has_a_customer_id
-    assert_equal "2", invoice.customer_id
+    assert_equal 2, invoice.customer_id
   end
   def test_it_has_an_invoice_id
-    assert_equal "3", invoice.merchant_id
+    assert_equal 3, invoice.merchant_id
   end
 
   def test_it_has_a_status

@@ -12,7 +12,7 @@ class MerchantTest<Minitest::Test
 
   def test_it_has_a_id
     merchant = Merchant.new(data, sales_engine=nil)
-    assert_equal "1", merchant.id
+    assert_equal 1, merchant.id
   end
 
   def test_it_has_a_name

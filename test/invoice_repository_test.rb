@@ -17,19 +17,19 @@ class InvoiceRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_invoice_id
     results = invoice_repository.find_by_id(3)
-    assert_equal "3", results.id
+    assert_equal 3, results.id
   end
 
   def test_it_can_find_by_customer_id
     results = invoice_repository.find_by_customer_id(2)
-    assert_equal "2", results.customer_id
+    assert_equal 2, results.customer_id
   end
 
   def test_it_can_find_by_all_customer_id
     results = invoice_repository.find_all_by_customer_id(1)
     assert_equal 8, results.count
     results.each do |invoice|
-      assert_equal "1", invoice.customer_id
+      assert_equal 1, invoice.customer_id
     end
   end
 

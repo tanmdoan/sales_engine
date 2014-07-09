@@ -17,7 +17,7 @@ class ItemRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_item_id
     results = item_repository.find_by_id(3)
-    assert_equal "3", results.id
+    assert_equal 3, results.id
   end
 
   def test_it_can_find_by_item_name
@@ -29,7 +29,7 @@ class ItemRepositoryTest < Minitest::Test
     results = item_repository.find_by_merchant_id(1)
     assert_equal 1, results.count
     results.each do |item|
-      assert_equal "1", item.merchant_id
+      assert_equal 1, item.merchant_id
     end
   end
 
@@ -37,7 +37,7 @@ class ItemRepositoryTest < Minitest::Test
     results = item_repository.find_all_by_merchant_id("1")
     assert_equal 10, results.count
     results.each do |item|
-      assert_equal "1", item.merchant_id
+      assert_equal 1, item.merchant_id
     end
   end
 
@@ -45,7 +45,7 @@ class ItemRepositoryTest < Minitest::Test
     results = item_repository.find_by_unit_price(75107)
     assert_equal 1, results.count
     results.each do |item|
-      assert_equal "75107", item.unit_price
+      assert_equal BigDecimal.new("75107"), item.unit_price
     end
   end
 
