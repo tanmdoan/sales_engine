@@ -1,3 +1,4 @@
+require 'pry'
 class Merchant
   attr_reader :id, :name, :created_at, :updated_at,
               :sales_engine
@@ -48,6 +49,17 @@ class Merchant
   def favorite_customer
     successful_invoices.group_by {|invoice| invoice.customer_id}.max_by {|customer|
       customer[1].count}[-1][0].customer
+  end
+
+
+  def pending_invoices
+    invoices.select {|invoice| invoice.pending?}
+  end
+
+  def customer_with_pending_invoices
+    pending_invoices.map do |invoice|
+      invoice.customer
+    end
   end
 
   # def all_successful_invoices

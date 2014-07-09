@@ -26,4 +26,8 @@ class Transaction
     result == "success"
   end
 
+  def pending?
+    result == "failed"
+  end
+
 end

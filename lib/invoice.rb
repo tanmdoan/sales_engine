@@ -41,4 +41,8 @@ class Invoice
     invoice_items.inject(0) {|sum, invoice_items| sum + invoice_items.charged}
   end
 
+  def pending?
+    transactions.all?(&:pending?)
+  end
+
 end

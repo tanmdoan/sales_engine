@@ -1,5 +1,6 @@
 require './test/test_helper'
 require 'bigdecimal'
+require 'pry'
 
 
 class SalesEngineTest < Minitest::Test
@@ -138,5 +139,14 @@ class SalesEngineTest < Minitest::Test
   def test_it_can_give_a_collection_of_successful_transactions
     customer = engine.customer_repository.find_by_id(1)
     assert_equal 7, customer.successful_invoices.count
+  end
+
+  def test_it_can_find_a_collection_of_customers_with_pending_invoices
+    merchants = engine.merchant_repository.find_by_name "Parisian Group"
+    customers = merchants.customer_with_pending_invoices
+    assert customers.any? do |customer|
+      customer.last_name == "Ledner"
+    end
+    assert_equal 4, customers.count
   end
 end
