@@ -1,4 +1,3 @@
-require 'pry'
 class Merchant
   attr_reader :id, :name, :created_at, :updated_at,
               :sales_engine
@@ -56,7 +55,7 @@ class Merchant
     invoices.select {|invoice| invoice.pending?}
   end
 
-  def customer_with_pending_invoices
+  def customers_with_pending_invoices
     pending_invoices.map do |invoice|
       invoice.customer
     end
