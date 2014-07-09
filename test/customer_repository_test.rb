@@ -61,7 +61,7 @@ class CustomerRepositoryTest < Minitest::Test
       customer_two = customer_repository.random
     end
 
-    refute customer_one.id. == customer_two.id
+    refute customer_one.id == customer_two.id
 
   end
 end
