@@ -31,10 +31,6 @@ class ItemTest<Minitest::Test
     assert_equal "Widgit", item.description
   end
 
-  def test_it_has_a_unit_price
-    assert_equal BigDecimal.new("23458"), item.unit_price
-  end
-
   def test_it_has_a_merchant_id
     assert_equal 2, item.merchant_id
   end

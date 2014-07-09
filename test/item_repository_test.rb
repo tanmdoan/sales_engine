@@ -25,41 +25,26 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal "Item Qui Esse", results.name
   end
 
-  def test_it_can_find_by_item_by_merchant_id
+  def test_it_can_find_by_merchant_id
     results = item_repository.find_by_merchant_id(1)
-    assert_equal 1, results.count
-    results.each do |item|
-      assert_equal 1, item.merchant_id
-    end
+    assert_equal 1, results.merchant_id
   end
 
   def test_it_can_find_all_by_merchant_id
-    results = item_repository.find_all_by_merchant_id("1")
-    assert_equal 10, results.count
-    results.each do |item|
-      assert_equal 1, item.merchant_id
-    end
-  end
-
-  def test_it_can_find_by_item_by_unit_price
-    results = item_repository.find_by_unit_price(75107)
-    assert_equal 1, results.count
-    results.each do |item|
-      assert_equal BigDecimal.new("75107"), item.unit_price
-    end
-  end
-
-  def test_it_can_find_all_by_unit_price
-    results = item_repository.find_all_by_unit_price("75107")
-    assert_equal 1, results.count
-    results.each do |item|
-      assert_equal "75107", item.unit_price
-    end
+    results = item_repository.find_all_by_merchant_id(1)
+    assert_equal "Item Qui Esse", results.first.name
   end
 
   def test_it_can_pull_a_random_items_instance
-    results = item_repository.random
-    assert_equal 1, results.count
+    item_one = item_repository.random
+    item_two = item_repository.random
+
+    10.times do
+      break if item_one.id != item_two.id
+      item_two = item_repository.random
+    end
+
+    refute item_one.id == item_two.id
   end
 
   def test_it_can_find_all_instances_of_items

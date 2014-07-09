@@ -34,8 +34,8 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_merchant_id
-    results = invoice_repository.find_by_merchant_id("26")
-    assert_equal "26", results.merchant_id
+    results = invoice_repository.find_by_merchant_id(26)
+    assert_equal 26, results.merchant_id
   end
 
   def test_it_can_find_all_by_status
@@ -47,12 +47,19 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_instances_of_invoice
-    invoice_repo = InvoiceParser.load('./data/invoices.csv').parse
-    assert 100 <= invoice_repo.count
+    assert_equal 10, invoice_repository.invoices.count
   end
 
   def test_it_can_pull_a_random_merchant_instance
-    results = invoice_repository.random
-    assert_equal 1, results.count
+    invoice_one = invoice_repository.random
+    invoice_two = invoice_repository.random
+
+    10.times do
+      break if invoice_one.id != invoice_two.id
+      invoice_two = invoice_repository.random
+    end
+
+    refute invoice_one.id == invoice_two.id
+
   end
 end
