@@ -16,12 +16,12 @@ class TransactionTest<Minitest::Test
 
   def test_it_has_a_id
     transaction = Transaction.new(data, sales_engine = nil)
-    assert_equal "5", transaction.id
+    assert_equal 5, transaction.id
   end
 
   def test_it_has_an_invoice_id
     transaction = Transaction.new(data, sales_engine = nil)
-    assert_equal "6", transaction.invoice_id
+    assert_equal 6, transaction.invoice_id
   end
 
   def test_it_has_a_credit_card_number

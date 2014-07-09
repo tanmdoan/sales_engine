@@ -17,37 +17,37 @@ class InvoiceItemRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_id
     results = invoice_item_repository.find_by_id(3)
-      assert_equal "3", results.id
+      assert_equal 3, results.id
   end
 
   def test_it_can_find_by_item_id
     results = invoice_item_repository.find_by_item_id(539)
-      assert_equal "539", results.item_id
+      assert_equal 539, results.item_id
   end
 
   def test_it_can_find_by_invoice_id
     results = invoice_item_repository.find_by_invoice_id(1)
-      assert_equal "1", results.invoice_id
+      assert_equal 1, results.invoice_id
   end
 
   def test_it_can_find_all_invoice_ids
     results = invoice_item_repository.find_all_by_invoice_id(1)
     assert_equal 8, results.count
     results.each do |invoice_item|
-      assert_equal "1", invoice_item.invoice_id
+      assert_equal 1, invoice_item.invoice_id
     end
   end
 
   def test_it_can_find_by_a_quantity
     results = invoice_item_repository.find_by_quantity(5)
-      assert_equal "5", results.quantity
+      assert_equal 5, results.quantity
   end
 
   def test_it_can_find_all_quantity
     results = invoice_item_repository.find_all_by_quantity(5)
     assert_equal 2, results.count
     results.each do |invoice_item|
-      assert_equal "5", invoice_item.quantity
+      assert_equal 5, invoice_item.quantity
     end
   end
 

@@ -17,7 +17,7 @@ class CustomerTest<Minitest::Test
 
   def test_it_has_a_id
     customer = Customer.new(data, nil)
-    assert_equal "1", customer.id
+    assert_equal 1, customer.id
   end
 
   def test_it_has_a_first_name
@@ -35,7 +35,4 @@ class CustomerTest<Minitest::Test
     assert_equal "2014-06-30 14:15:05 UTC", customer.updated_at
   end
 
-  def test_customer_can_collect_successful_transactions
-    transactions = 
-  end
 end

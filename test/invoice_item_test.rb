@@ -19,21 +19,21 @@ class InvoiceItemTest<Minitest::Test
   end
 
   def test_it_has_an_id
-    assert_equal "1", invoice_item.id
+    assert_equal 1, invoice_item.id
   end
   def test_it_has_an_item_id
-    assert_equal "2", invoice_item.item_id
+    assert_equal 2, invoice_item.item_id
   end
   def test_it_has_an_invoice_id
-    assert_equal "3", invoice_item.invoice_id
+    assert_equal 3, invoice_item.invoice_id
   end
 
   def test_it_has_a_quantity
-    assert_equal "100", invoice_item.quantity
+    assert_equal 100, invoice_item.quantity
   end
 
   def test_it_has_a_unit_price
-    assert_equal "12345", invoice_item.unit_price
+    assert_equal BigDecimal.new("12345.00"), invoice_item.unit_price
   end
 
   def test_it_is_created_at

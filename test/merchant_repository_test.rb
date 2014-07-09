@@ -9,8 +9,6 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_that_merchant_repository_contains_merchant_data
-    require "pry"
-    binding.pry
     assert 10 <= merchant_repository.merchants.count
   end
 
@@ -20,7 +18,7 @@ class MerchantRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_merchant_id
     results = merchant_repository.find_by_id(3)
-    assert_equal "3", results.id
+    assert_equal 3, results.id
   end
 
   def test_it_can_find_by_merchant_name

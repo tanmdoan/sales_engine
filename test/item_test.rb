@@ -20,7 +20,7 @@ class ItemTest<Minitest::Test
   end
 
   def test_it_has_a_id
-    assert_equal "1", item.id
+    assert_equal 1, item.id
   end
 
   def test_it_has_a_name
@@ -32,11 +32,11 @@ class ItemTest<Minitest::Test
   end
 
   def test_it_has_a_unit_price
-    assert_equal "23458", item.unit_price
+    assert_equal BigDecimal.new("23458"), item.unit_price
   end
 
   def test_it_has_a_merchant_id
-    assert_equal "2", item.merchant_id
+    assert_equal 2, item.merchant_id
   end
 
   def test_it_is_created_at

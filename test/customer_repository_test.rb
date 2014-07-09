@@ -18,7 +18,7 @@ class CustomerRepositoryTest < Minitest::Test
 
  def test_it_can_find_by_customers_id
    results = customer_repository.find_by_id(1)
-     assert_equal "1", results.id
+     assert_equal 1, results.id
  end
 
  def test_it_can_find_by_customers_first_name
@@ -54,7 +54,7 @@ class CustomerRepositoryTest < Minitest::Test
 
  def test_it_can_pull_a_random_customers_instance
    results = customer_repository.random
-   assert_equal 1, results.count
+   refute results.empty?, results
  end
 
 end

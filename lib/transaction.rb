@@ -18,10 +18,6 @@ class Transaction
     sales_engine.invoice_repository.find_by_id(invoice_id)
   end
 
-  def merchant
-
-  end
-
   def successful?
     result == "success"
   end
