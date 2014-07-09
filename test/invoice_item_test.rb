@@ -12,7 +12,7 @@ class InvoiceItemTest<Minitest::Test
       item_id: "2",
       invoice_id: "3",
       quantity: "100",
-      unit_price: "12345",
+      unit_price: "1",
       created_at: "2014-06-14 12:12:12 UTC",
       updated_at: "2014-06-30 14:15:05 UTC"
     }
@@ -30,10 +30,6 @@ class InvoiceItemTest<Minitest::Test
 
   def test_it_has_a_quantity
     assert_equal 100, invoice_item.quantity
-  end
-
-  def test_it_has_a_unit_price
-    assert_equal BigDecimal.new("12345.00"), invoice_item.unit_price
   end
 
   def test_it_is_created_at
