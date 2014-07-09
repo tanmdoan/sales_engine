@@ -1,5 +1,6 @@
 class Customer
-  attr_reader :id, :first_name, :last_name, :created_at, :updated_at, :sales_engine
+  attr_reader :id, :first_name, :last_name,
+              :created_at, :updated_at, :sales_engine
 
   def initialize(data, sales_engine)
     @id         = data[:id].to_i
@@ -24,7 +25,6 @@ class Customer
 
   def favorite_merchant
     successful_invoices.group_by {|invoice|
-    invoice.merchant_id}.max_by {|merchant| merchant[1].count}[-1][0].merchant
+      invoice.merchant_id}.max_by {|merchant| merchant[1].count}[-1][0].merchant
+    end
   end
-
-end

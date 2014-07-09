@@ -22,7 +22,6 @@ class CustomerRepository
     end
   end
 
-
   def find_by_first_name(first_name)
     customers.detect do |customer|
       customer.first_name == first_name

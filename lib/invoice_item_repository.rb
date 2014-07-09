@@ -1,7 +1,6 @@
 require 'csv'
 require_relative 'invoice_item'
 
-
 class InvoiceItemRepository
   attr_reader :invoice_items, :sales_engine
 
@@ -11,7 +10,7 @@ class InvoiceItemRepository
 
   def self.load(sales_engine, file='./data/invoice_items.csv')
     data = CSV.open(file, headers: true, header_converters: :symbol)
-      rows = data.map do |row|
+    rows = data.map do |row|
       InvoiceItem.new(row, sales_engine)
     end
     new(rows)

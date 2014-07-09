@@ -28,12 +28,12 @@ class Item
 
   def revenue
     successful_invoice_items
-      .inject(0) { |sum, invoice_item| sum + invoice_item.charged }
+    .inject(0) { |sum, invoice_item| sum + invoice_item.charged }
   end
 
   def quantity
     successful_invoice_items.inject(0) do |sum, invoice_item|
-       sum + invoice_item.quantity
+      sum + invoice_item.quantity
     end
   end
 
@@ -59,6 +59,6 @@ class Item
 
   def total_revenue_per_item
     invoice_items
-      .inject(0) { |sum, invoice_item| sum + invoice_item.charged }
+    .inject(0) { |sum, invoice_item| sum + invoice_item.charged }
   end
 end

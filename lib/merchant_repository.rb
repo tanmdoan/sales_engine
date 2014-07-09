@@ -64,9 +64,8 @@ class MerchantRepository
   end
 
   def revenue(date)
-    all.inject(0) {|sum, merchant| sum + merchant.revenue(date) }
+    all.inject(0) {|sum, merchant| sum + merchant.revenue(date)}
   end
-
 
   def random
     merchants.sample

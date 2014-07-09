@@ -1,7 +1,6 @@
 require 'csv'
 require_relative 'item'
 
-
 class ItemRepository
   attr_reader :items, :sales_engine
 
@@ -23,16 +22,15 @@ class ItemRepository
     end
   end
 
-
   def find_by_name(name)
     items.detect do |item|
-    item.name == name
+      item.name == name
     end
   end
 
   def find_all_by_name(name)
     items.select do |item|
-    item.name == name
+      item.name == name
     end
   end
 
@@ -48,10 +46,9 @@ class ItemRepository
     end
   end
 
-
   def find_by_unit_price(unit_price)
     items.detect do |item|
-    item.unit_price == unit_price
+      item.unit_price == unit_price
     end
   end
 

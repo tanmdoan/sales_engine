@@ -177,5 +177,10 @@ class SalesEngineTest < Minitest::Test
     item = engine.item_repository.find_by_name "Item Accusamus Ut"
     assert_equal Date.new(2012, 3, 24), item.best_day.to_date
   end
-  
+
+  def test_it_can_create_a_new_invoice
+    invoice_item_count = engine.invoice_item_repository.invoice_items.count
+    assert invoice_item_count + 1, invoice_repository.create
+  end
+
 end

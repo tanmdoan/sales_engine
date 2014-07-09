@@ -1,6 +1,7 @@
 
 class Invoice
-  attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at, :sales_engine
+  attr_reader :id, :customer_id, :merchant_id, :status,
+              :created_at, :updated_at, :sales_engine
 
   def initialize(data, sales_engine)
     @id          = data[:id].to_i
@@ -11,7 +12,6 @@ class Invoice
     @updated_at  = data[:updated_at]
     @sales_engine = sales_engine
   end
-
 
   def transactions
     sales_engine.transaction_repository.find_all_by_invoice_id(id)

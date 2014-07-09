@@ -1,6 +1,6 @@
 require 'bigdecimal'
 
-module UnitConversion
+module DecimalConversion
   def convert_to_big_decimal(cents)
     BigDecimal.new(convert_cents_to_dollars(cents).to_s)
   end
