@@ -61,6 +61,12 @@ class Merchant
     end
   end
 
+  def all_merchant_revenue
+    #take the succesfull invoices for a merchant, and calculate the revenue
+    successful_invoices
+
+  end
+
   # def all_successful_invoices
   #   invoices.select do |invoice|
   #     invoice.status == "shipped"

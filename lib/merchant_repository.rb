@@ -6,7 +6,7 @@ class MerchantRepository
   attr_reader :merchants, :sales_engine
 
   def initialize(merchants)
-    @merchants = merchants
+    @merchants ||= merchants
   end
 
   def self.load(sales_engine, file='./data/customers.csv')
@@ -47,6 +47,15 @@ class MerchantRepository
     merchants.select do |merchant|
       merchant.created_at == date
     end
+  end
+
+  def all
+    @merchants
+  end
+
+  def most_revenue(num = nil)
+    num ||= all.count
+    all.sort_by(&:revenue).reverse[0...num]
   end
 
   def random

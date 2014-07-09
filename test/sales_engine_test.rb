@@ -149,4 +149,10 @@ class SalesEngineTest < Minitest::Test
     end
     assert_equal 4, customers.count
   end
+
+  def test_it_can_rank_the_top_merchants_by_total_revenue
+     most = engine.merchant_repository.most_revenue(3)
+     assert_equal "Dicki-Bednar", most.first.name
+     assert_equal "Okuneva, Prohaska and Rolfson", most.last.name
+  end
 end
