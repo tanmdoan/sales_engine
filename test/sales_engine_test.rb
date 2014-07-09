@@ -177,4 +177,5 @@ class SalesEngineTest < Minitest::Test
     item = engine.item_repository.find_by_name "Item Accusamus Ut"
     assert_equal Date.new(2012, 3, 24), item.best_day.to_date
   end
+  
 end
