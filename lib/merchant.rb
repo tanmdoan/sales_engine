@@ -61,10 +61,8 @@ class Merchant
     end
   end
 
-  def all_merchant_revenue
-    #take the succesfull invoices for a merchant, and calculate the revenue
-    successful_invoices
-
+  def quantity
+    successful_invoices.inject(0) {|sum, invoice| sum + invoice.quantity}
   end
 
   # def all_successful_invoices

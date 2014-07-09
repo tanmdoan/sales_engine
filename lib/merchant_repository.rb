@@ -53,10 +53,16 @@ class MerchantRepository
     @merchants
   end
 
-  def most_revenue(num = nil)
-    num ||= all.count
-    all.sort_by(&:revenue).reverse[0...num]
+  def most_revenue(number = nil)
+    number ||= all.count
+    all.sort_by(&:revenue).reverse[0...number]
   end
+
+  def most_items(number)
+    number ||= all.count
+    all.sort_by(&:quantity).reverse[0...number]
+  end
+
 
   def random
     merchants.sample

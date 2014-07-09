@@ -29,13 +29,17 @@ class Invoice
     sales_engine.customer_repository.find_by_id(customer_id)
   end
 
+  def quantity
+    invoice_items.inject(0){|sum, invoice_item| sum + invoice_item.quantity}
+  end
+
   def merchant
     sales_engine.merchant_repository.find_by_id(merchant_id)
   end
 
-  def all_merchants
-    sales_engine.merchant_repository.merchants
-  end
+  # def all_merchants
+  #   sales_engine.merchant_repository.merchants
+  # end
 
   def successful?
     transactions.any?(&:successful?)

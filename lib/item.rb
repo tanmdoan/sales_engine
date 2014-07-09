@@ -22,6 +22,14 @@ class Item
     sales_engine.merchant_repository.find_by_id(merchant_id)
   end
 
+  def successful_invoice_items
+    invoice_items.all?{|invoice_item| invoice_item.successful?}
+  end
+
+  def quantity_sold
+    succesful_invoice_items.inject(0){|sum, invoice_item| sum + invoice_item.quantity}
+  end
+
   def convert_to_big_decimal(cents)
     BigDecimal.new(convert_cents_to_dollars(cents).to_s)
   end

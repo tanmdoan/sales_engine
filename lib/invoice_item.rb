@@ -34,6 +34,12 @@ class InvoiceItem
     cents.to_i/100.00
   end
 
+  def successful?
+    invoice.successful?
+  end
+  
+
+
   def charged
     quantity * unit_price
   end

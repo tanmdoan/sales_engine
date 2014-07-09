@@ -151,8 +151,16 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_it_can_rank_the_top_merchants_by_total_revenue
+     skip
      most = engine.merchant_repository.most_revenue(3)
      assert_equal "Dicki-Bednar", most.first.name
      assert_equal "Okuneva, Prohaska and Rolfson", most.last.name
+  end
+
+  def test_it_can_rank_the_top_merchants_by_total_number_of_items
+    skip
+    most = engine.merchant_repository.most_items(5)
+    assert_equal "Kassulke, O'Hara and Quitzon", most.first.name
+    assert_equal "Daugherty Group", most.last.name
   end
 end
