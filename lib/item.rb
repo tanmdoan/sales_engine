@@ -26,8 +26,14 @@ class Item
     invoice_items.all?{|invoice_item| invoice_item.successful?}
   end
 
+  def revenue
+    successful_invoice_items.inject(0) {|sum, invoice_item| sum + invoice_item}
+  end
+
   def quantity_sold
-    succesful_invoice_items.inject(0){|sum, invoice_item| sum + invoice_item.quantity}
+    succesful_invoice_items.inject(0) do |sum, invoice_item|
+       sum + invoice_item.total_revenue_per_item
+    end
   end
 
   def convert_to_big_decimal(cents)
@@ -36,5 +42,9 @@ class Item
 
   def convert_cents_to_dollars(cents)
     cents.to_i/100.00
+  end
+
+  def total_revenue_per_item
+    invoice_items.inject(0) {|sum, invoice_items| sum + invoice_items.charged}
   end
 end

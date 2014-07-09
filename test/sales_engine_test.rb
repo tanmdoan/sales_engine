@@ -127,21 +127,25 @@ class SalesEngineTest < Minitest::Test
   # end
   #
   def test_it_can_return_an_instance_of_merchant_where_customer_has_the_most_transactions
+    skip
     customer = engine.customer_repository.find_by_id(2)
     assert_equal "Shields, Hirthe and Smith", customer.favorite_merchant.name
   end
 
   def test_it_can_return_an_instance_of_customer_with_the_most_merchant_transactions
+    skip
     merchant = engine.merchant_repository.find_by_name("Terry-Moore")
     assert_equal "Hammes", merchant.favorite_customer.last_name
   end
 
   def test_it_can_give_a_collection_of_successful_transactions
+    skip
     customer = engine.customer_repository.find_by_id(1)
     assert_equal 7, customer.successful_invoices.count
   end
 
   def test_it_can_find_a_collection_of_customers_with_pending_invoices
+    skip
     merchant = engine.merchant_repository.find_by_name "Parisian Group"
     customers = merchant.customers_with_pending_invoices
     assert customers.any? do |customer|
@@ -165,8 +169,17 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_it_returns_total_revenue_for_all_merchants_given_a_date
+    skip
     date = Date.parse "Tue, 20 Mar 2012"
     revenue = engine.merchant_repository.revenue(date)
     assert_equal BigDecimal.new("2549722.91"), revenue
   end
+
+  def test_it_reports_most_revenue_by_item
+    most = engine.item_repository.most_revenue(5)
+    assert_equal "Item Dicta Autem", most.first.name
+    assert_equal "Item Amet Accusamus", most.last.name
+  end
+
+
 end

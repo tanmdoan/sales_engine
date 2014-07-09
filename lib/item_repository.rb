@@ -65,8 +65,18 @@ class ItemRepository
     items.sample
   end
 
+  def all
+    @items
+  end
+
   def inspect
     "#<#{self.class} #{@items.size} rows>"
   end
+
+  def most_revenue(number = nil)
+    number ||= all.count
+    all.sort_by(&:revenue).reverse[0...number]
+  end
+
 
 end
