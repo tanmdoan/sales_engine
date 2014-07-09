@@ -163,4 +163,10 @@ class SalesEngineTest < Minitest::Test
     assert_equal "Kassulke, O'Hara and Quitzon", most.first.name
     assert_equal "Daugherty Group", most.last.name
   end
+
+  def test_it_returns_total_revenue_for_all_merchants_given_a_date
+    date = Date.parse "Tue, 20 Mar 2012"
+    revenue = engine.merchant_repository.revenue(date)
+    assert_equal BigDecimal.new("2549722.91"), revenue
+  end
 end
