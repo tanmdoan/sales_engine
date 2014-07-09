@@ -161,9 +161,8 @@ class SalesEngineTest < Minitest::Test
 
   def test_it_reports_most_revenue_by_item
     most = engine.item_repository.most_revenue(5)
-    assert_equal "Item Dicta Autem", most.first.name
+    assert_equal 5, most.size
+    assert_equal "Item Dicta Autem",    most.first.name
     assert_equal "Item Amet Accusamus", most.last.name
   end
-
-
 end
