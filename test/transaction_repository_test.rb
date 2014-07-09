@@ -26,27 +26,18 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_credit_card_number
-    results = transaction_repository.find_by_credit_card_number(4654405418249632)
-    assert_equal 1, results.count
-    results.each do |transaction|
-      assert_equal "4654405418249632", transaction.credit_card_number
-    end
+    results = transaction_repository.find_by_credit_card_number('4654405418249632')
+    assert_equal "4654405418249632", results.credit_card_number
   end
 
   def test_it_can_find_all_by_credit_card_number
-    results = transaction_repository.find_all_by_credit_card_number(4654405418249632)
-    assert_equal 1, results.count
-    results.each do |transaction|
-      assert_equal "4654405418249632", transaction.credit_card_number
-    end
+    results = transaction_repository.find_all_by_credit_card_number('4654405418249632')
+    assert_equal '4654405418249632', results.first.credit_card_number
   end
 
   def test_it_can_find_by_result
     results = transaction_repository.find_by_result("success")
-    assert_equal 1, results.count
-    results.each do |transaction|
-      assert_equal "success", transaction.result
-    end
+    assert_equal "success", results.result
   end
 
   def test_it_can_find_all_by_result
@@ -63,7 +54,14 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_it_can_pull_a_random_transaction_instance
-    results = transaction_repository.random
-    assert_equal 1, results.count
+    transaction_one = transaction_repository.random
+    transaction_two = transaction_repository.random
+
+    10.times do
+      break if transaction_one.id != transaction_two.id
+      transaction_two = transaction_repository.random
+    end
+
+    refute transaction_one.id == transaction_two.id
   end
 end

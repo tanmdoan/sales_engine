@@ -41,8 +41,15 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_pull_a_random_merchant_instance
-    results = merchant_repository.random
-    assert_equal 1, results.count
+    merchant_one = merchant_repository.random
+    merchant_two = merchant_repository.random
+
+    10.times do
+      break if merchant_one.id != merchant_two.id
+      merchant_two = merchant_repository.random
+    end
+
+    refute merchant_one.id == merchant_two.id 
   end
 
 
