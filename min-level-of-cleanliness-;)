@@ -1,0 +1,6 @@
+* No commented out tests
+* I can run full test suite
+* No ghost code
+  * code that's never run, never used, it's dead but just hanging around (in a comment, or -- even worse -- uncommented)
+  * e.g. Parser
+* No failing tests
