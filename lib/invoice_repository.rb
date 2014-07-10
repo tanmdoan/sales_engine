@@ -70,9 +70,10 @@ class InvoiceRepository
   def create(data)
     data[:id] = all.last.id + 1
     time      = Time.now.to_s
-    invoice = Invoice.new({id: data[:id], customer_id: data[:customer].id,
-                          merchant_id: data[:merchant].id, status: data[:status],
-                          created_at: time, update_at: time}, sales_engine)
+    invoice   = Invoice.new({id: data[:id], customer_id: data[:customer].id,
+                             merchant_id: data[:merchant].id,
+                             status: data[:status], created_at: time,
+                             update_at: time}, sales_engine)
     create_invoice_item(data)
     all << invoice
     invoice
