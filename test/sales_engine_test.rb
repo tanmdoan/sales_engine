@@ -179,8 +179,14 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_it_can_create_a_new_invoice
+    customer = engine.customer_repository.find_by_id(7)
+    merchant = engine.merchant_repository.find_by_id(22)
+    items    = (1..3).map{engine.item_repository.random}
+
+    invoice_count      = engine.invoice_repository.invoices.count
     invoice_item_count = engine.invoice_item_repository.invoice_items.count
-    assert invoice_item_count + 1, invoice_repository.create
+    assert invoice_count + 1 <= invoice_item_count,
+      engine.invoice_repository.create(customer: customer, merchant: merchant, items: items)
   end
 
 end

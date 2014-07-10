@@ -2,10 +2,11 @@ require 'csv'
 require_relative 'invoice'
 
 class InvoiceRepository
-  attr_reader :invoices
+  attr_reader :invoices, :sales_engine
 
-  def initialize(invoices)
-    @invoices = invoices
+  def initialize(invoices, sales_engine)
+    @invoices     = invoices
+    @sales_engine = sales_engine
   end
 
   def self.load(sales_engine, file ='./data/fixtures/invoices_sample.csv')
@@ -13,7 +14,11 @@ class InvoiceRepository
     rows = data.map do |row|
       Invoice.new(row, sales_engine)
     end
-    new(rows)
+    new(rows, sales_engine)
+  end
+
+  def all
+    @invoices
   end
 
   def find_by_id(id)
@@ -60,6 +65,21 @@ class InvoiceRepository
 
   def random
     invoices.sample
+  end
+
+  def create(data)
+    data[:id] = all.last.id + 1
+    time      = Time.now.to_s
+    invoice = Invoice.new({id: data[:id], customer_id: data[:customer].id,
+                          merchant_id: data[:merchant].id, status: data[:status],
+                          created_at: time, update_at: time}, sales_engine)
+    create_invoice_item(data)
+    all << invoice
+    invoice
+  end
+
+  def create_invoice_item(data)
+    sales_engine.invoice_item_repository.create_invoice_items(data)
   end
 
   def inspect

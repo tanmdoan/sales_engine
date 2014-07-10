@@ -49,4 +49,8 @@ class Invoice
     transactions.all?(&:pending?)
   end
 
+  def charge(transaction_data)
+    transaction_data[:invoice_id] = id
+    sales_engine.transaction_repository.create(transaction_data)
+  end
 end
