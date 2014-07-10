@@ -74,10 +74,7 @@ class InvoiceItemRepository
   def random
     invoice_items.sample
   end
-
-  def create_invoice_items(info)
-  end
-
+  
   def all
     @invoice_items
   end

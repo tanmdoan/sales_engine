@@ -9,23 +9,24 @@ class SalesEngine
   attr_reader :item_repository, :transaction_repository,
               :invoice_item_repository,
               :customer_repository, :merchant_repository,
-              :invoice_repository
-  def initialize(dir = nil)
+              :invoice_repository, :dir
+  def initialize(dir = "./data")
+    @dir = dir
   end
 
   def startup
     @item_repository ||=
-      ItemRepository.load(self, './data/items.csv')
+      ItemRepository.load(self, "#{dir}/items.csv")
     @merchant_repository ||=
-      MerchantRepository.load(self, './data/merchants.csv')
+      MerchantRepository.load(self, "#{dir}/merchants.csv")
     @transaction_repository ||=
-      TransactionRepository.load(self, './data/transactions.csv')
+      TransactionRepository.load(self, "#{dir}/transactions.csv")
     @invoice_repository ||=
-      InvoiceRepository.load(self, './data/invoices.csv')
+      InvoiceRepository.load(self, "#{dir}/invoices.csv")
     @invoice_item_repository ||=
-      InvoiceItemRepository.load(self, './data/invoice_items.csv')
+      InvoiceItemRepository.load(self, "#{dir}/invoice_items.csv")
     @customer_repository ||=
-      CustomerRepository.load(self, './data/customers.csv')
+      CustomerRepository.load(self, "#{dir}/customers.csv")
   end
 
 end
